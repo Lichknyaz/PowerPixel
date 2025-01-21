@@ -1,0 +1,61 @@
+.social-media-links {
+    border: none;
+    display: flex;
+    gap: 12px;
+}
+
+.social-media-links li a {
+    border: none;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color var(--ANIMATION), border-color var(--ANIMATION);
+}
+
+.social-media-links li a {
+    border: 1px solid rgba(244, 244, 244, 0.1);
+    background: transparent;
+}
+
+.social-media-links li a svg {
+    width: 28px;
+    height: 28px;
+    fill: var(--color-background);
+}
+
+.social-media-links li a:hover,
+.social-media-links li a:focus,
+.social-media-links li a:active {
+    border-color: var(--color-background);
+    background-color: var(--color-background);
+    outline: none;
+}
+
+.social-media-links li a:hover svg,
+.social-media-links li a:focus svg,
+.social-media-links li a:active svg {
+    fill: var(--color-black-100);
+}
+
+.social-media-links--white li a {
+    border: 1px solid rgba(36, 36, 36, 0.1);
+}
+
+.social-media-links--white li a svg {
+    fill: var(--color-black-100);
+}
+
+.social-media-links--white li a:hover,
+.social-media-links--white li a:focus,
+.social-media-links--white li a:active {
+    background-color: rgba(36, 36, 36, 0.8);
+    background-color: rgba(36, 36, 36, 0.8);
+}
+
+.social-media-links--white li a:hover svg,
+.social-media-links--white li a:focus svg,
+.social-media-links--white li a:active svg {
+    fill: var(--color-background);
+}
