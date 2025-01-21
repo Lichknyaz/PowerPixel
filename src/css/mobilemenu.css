@@ -25,7 +25,7 @@
   width: 240px;
   height: 100dvh;
   color: var(--color-white);
-  background-color: white;
+  background-color: rgb(var(--color-main));
   border: none;
   display: flex;
   flex-direction: column;
@@ -34,6 +34,113 @@
   transform: translateX(100%);
   animation-duration: 0.5s;
   animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .mob-menu {
+    width: 384px;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  fill: rgba(255, 255, 255, 1);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+  .close-btn {
+    top: 20px;
+    right: 32px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+}
+
+.menu-container-list {
+  padding-top: 248px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.menu-container-item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.menu-container-link {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+}
+
+.social-container-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .social-container-list {
+    margin: 32px 0;
+  }
+}
+
+.social-container-item {
+  min-width: 42px;
+  min-height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.socials-link {
+  fill: rgba(255, 255, 255, 1);
+}
+
+@media only screen and (min-width: 768px) {
+  .social-container-item {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+.social-container-list .socials-link {
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mobile-menu-icon {
