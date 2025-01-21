@@ -12,8 +12,6 @@
     column-gap: 16px;
   }
 }
-
-
 @media only screen and (min-width: 1200px) {
   .exercises-sidebar {
     flex-direction: column;
@@ -33,13 +31,6 @@
   font: inherit;
 }
 
-/*REMOVE AFTER*/
-
-.container {
-  background-color: var(--color-background);
-}
-/*XXXXXXXXXXXXXXXXXX*/
-
 .sidebar-suggestion-wrapper {
   background-color: var(--color-white-100);
 }
@@ -56,6 +47,7 @@
   }
   .quote-image {
     width: 288px;
+    height: 249px;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -79,6 +71,11 @@
   margin-bottom: 8px;
 }
 
+.sidebar-suggestion-title {
+  color: var(--color-black-100);
+  margin-bottom: 2px;
+}
+
 @media only screen and (min-width: 768px) {
   .sidebar-quote-title,
   .sidebar-suggestion-title{
@@ -86,16 +83,28 @@
     line-height: 32px; /* 133.333% */
     margin-bottom: 6px;
   }
+  .sidebar-suggestion-title{
+    margin-bottom: 2px;
+  }
 }
 
-.sidebar-suggestion-title {
-  color: var(--color-black-100);
+@media only screen and (min-width: 1200px) {
+  .sidebar-quote-title,
+  .sidebar-suggestion-title{
+    font-size: 24px;
+    line-height: 32px; /* 133.333% */
+    margin-bottom: 6px;
+  }
+  .sidebar-suggestion-title{
+    margin-bottom: 2px;
+  }
 }
 
 .sidebar-quote,
 .sidebar-suggestion {
   margin-bottom: 16px;
 }
+
 
 .sidebar-quote,
 .sidebar-quote-author,
@@ -107,6 +116,24 @@
   font-weight: 400;
   line-height: 18px; /* 128.571% */
 }
+
+@media only screen and (min-width: 768px) {
+  .sidebar-quote
+ {
+    margin-bottom: 18px;
+  }
+  .sidebar-suggestion {
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .sidebar-quote
+  {
+    margin-bottom: 8px;
+  }
+}
+
 
 /*@media only screen and (min-width: 768px) {*/
 /*  .sidebar-quote,*/
@@ -142,6 +169,8 @@
 .inverted-commas{
   top: 40px;
   right: 40px;
+  height: 24px;
+  width: 24px;
 }
 }
 
