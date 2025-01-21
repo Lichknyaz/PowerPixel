@@ -5,3 +5,4 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 import './js/mobilemenu';
+import './js/quote.js';
