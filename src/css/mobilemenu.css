@@ -4,9 +4,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  color: rgba(255, 255, 255, 1);
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 999;
+  background-color: var(--color-black-100);
+  z-index: 100;
   display: none;
 }
 
@@ -22,34 +21,19 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 240px;
+  width: 100%;
   height: 100dvh;
   color: var(--color-white);
-  background-color: rgb(var(--color-main));
+  background-color: rgb(var(--color-black-100));
   border: none;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   align-items: center;
   transform: translateX(100%);
   animation-duration: 0.5s;
   animation-name: slidein;
-}
-
-@keyframes slidein {
-  from {
-    transform: translateX(100%);
-  }
-
-  to {
-    transform: translateX(0%);
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .mob-menu {
-    width: 384px;
-  }
+  transition: transform 0.5s ease-in-out;
+  z-index: 300;
 }
 
 .close-btn {
@@ -59,24 +43,26 @@
   width: 32px;
   height: 32px;
   padding: 0;
-  fill: rgba(255, 255, 255, 1);
+  color: white;
+  fill: white;
   background-color: transparent;
   border: none;
   cursor: pointer;
+  z-index: 400;
 }
 
-@media only screen and (min-width: 768px) {
-  .close-btn {
-    top: 20px;
-    right: 32px;
-    width: 40px;
-    height: 40px;
-  }
+.js-close-menu svg {
+  fill: var(--color-white-80);
+  width: 32px;
+  height: 32px;
 }
 
 .menu-container {
+  position: relative;
+  z-index: 300;
   display: flex;
   flex-direction: column;
+  background-color: white;
   height: 100dvh;
 }
 
@@ -88,10 +74,11 @@
   align-items: center;
   text-align: center;
   flex-grow: 1;
+  width: 100%;
 }
 
-.menu-container-item:not(:last-child) {
-  margin-bottom: 20px;
+.menu-container-item {
+  color: var(--color-white-80);
 }
 
 .menu-container-link {
@@ -109,12 +96,7 @@
   align-items: center;
   gap: 12px;
   margin: 20px 0;
-}
-
-@media only screen and (min-width: 768px) {
-  .social-container-list {
-    margin: 32px 0;
-  }
+  background-color: white;
 }
 
 .social-container-item {
@@ -137,10 +119,6 @@
     min-width: 44px;
     min-height: 44px;
   }
-}
-
-.social-container-list .socials-link {
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mobile-menu-icon {

@@ -132,6 +132,10 @@
   display: block;
 }
 
+.socials-link {
+  fill: var(--color-black-100);
+}
+
 .btn-socials.on-white:hover .socials-icon use {
   fill: var(--color-white-100);
 }

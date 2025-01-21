@@ -7,10 +7,12 @@ document.addEventListener('DOMContentLoaded', function () {
     menuButton.addEventListener('click', function () {
       console.log('!!!');
       mobileMenu.classList.add('is-open');
+      menuCloseButton.style.display = 'block';
     });
 
     menuCloseButton.addEventListener('click', function () {
       mobileMenu.classList.remove('is-open');
+      menuCloseButton.style.display = 'none';
     });
   }
 });
