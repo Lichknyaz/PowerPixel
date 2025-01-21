@@ -30,7 +30,6 @@
   --color-black-10: rgba(36, 36, 36, 0.1);
 
   --color-yellow: rgba(238, 161, 12, 1);
-
 }
 
 body {
@@ -47,4 +46,3 @@ main {
 main:has(.back-link) {
   text-align: center;
 }
-
