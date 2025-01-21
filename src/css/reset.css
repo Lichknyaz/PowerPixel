@@ -22,7 +22,7 @@ ul {
     list-style: none;
   }
   
-  a {
+a {
     color: currentColor;
     text-decoration: none;
-  }
+}
