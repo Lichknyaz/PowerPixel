@@ -16,7 +16,7 @@
   flex-grow: 1;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 768px) {
   .header-nav {
     justify-content: center;
   }
@@ -39,7 +39,7 @@
   .header-nav-list {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 20px;
     font-size: 14px;
     background-color: black;
@@ -48,6 +48,8 @@
     padding-left: 34px;
     padding-right: 46px;
     border-radius: 60px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .header-nav-item.active {
@@ -124,4 +126,8 @@
     justify-content: flex-end;
     gap: 12px;
   }
+}
+
+.socials-icon {
+  display: block;
 }
