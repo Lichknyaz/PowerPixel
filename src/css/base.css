@@ -13,6 +13,24 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -text-size-adjust: 100%;
+
+  --color-background: rgba(244, 244, 244, 1);
+
+  --color-white-100: rgba(255, 255, 255, 1);
+  --color-white-80: rgba(255, 255, 255, 0.8);
+  --color-white-60: rgba(244, 244, 244, 0.6);
+  --color-white-20: rgba(244, 244, 244, 0.2);
+
+  --color-light-grey: rgba(212, 212, 212, 1);
+
+  --color-black-100: rgba(36, 36, 36, 1);
+  --color-black-80: rgba(36, 36, 36, 0.8);
+  --color-black-60: rgba(36, 36, 36, 0.6);
+  --color-black-50: rgba(36, 36, 36, 0.5);
+  --color-black-10: rgba(36, 36, 36, 0.1);
+
+  --color-yellow: rgba(238, 161, 12, 1);
+
 }
 
 body {
@@ -29,3 +47,4 @@ main {
 main:has(.back-link) {
   text-align: center;
 }
+
