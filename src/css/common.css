@@ -1,67 +1,116 @@
-.btn {
-    display: flex;
-        gap: 8px;
-        align-items: center;
-        padding: 12px 24px;
-        height: 48px;
-        border-radius: 30px;
+/* #region Buttons */
+  .btn {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding: 12px 24px;
+      height: 48px;
+      border-radius: 30px;
+  }
+
+  .btn.primary {
+      background-color: var(--color-white-100);
+  }
+
+  .btn.primary:hover {
+      background-color: transparent;
+      border: 1px solid;
+      color: var(--color-white-100);
+      border-color: var(--color-white-100);
+  }
+
+  .btn.secondary {
+      border: 1px solid;
+      color: var(--color-white-100);
+      border-color: var(--color-white-100);
+      background-color: transparent;
+  }
+
+  .btn.secondary:hover {
+      border: none;
+      color: var(--color-black-100);
+      background-color: var(--color-white-100);
+
+  }
+
+  .btn-socials {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 44px;
+      height: 44px;
+
+      border: 1px solid;
+      border-radius: 10px;
+  }
+
+  .btn-socials.on-white {
+      background-color: transparent;
+      fill: var(--color-black-80);
+      border-color: var(--color-black-10);
+  }
+
+  .btn-socials.on-white:hover {
+      background-color: var(--color-black-80);
+      fill: var(--color-white-100)
+  }
+
+  .btn-socials.on-black {
+      background-color: transparent;
+      fill: var(--color-white-80);
+      border-color: var(--color-black-80);
+  }
+
+  .btn-socials.on-black:hover {
+      background-color: var(--color-white-100);
+      fill: var(--color-white-80)
+  }
+/* #endregion Buttons */
+
+
+/* #region Fonts */
+.heading-one {
+    font-size: 38px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
 }
 
-.btn.primary {
-    background-color: var(--color-white-100);
+@media (min-width: 768px) {
+    .heading-one {
+        font-size: 74px;
+        line-height: 1.0;
+        letter-spacing: -0.02em;
+    }
 }
 
-.btn.primary:hover {
-    background-color: transparent;
-    border: 1px solid;
-        color: var(--color-white-100);
-        border-color: var(--color-white-100);
+.heading-two {
+    font-size: 28px;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
 }
 
-.btn.secondary {
-    border: 1px solid;
-    color: var(--color-white-100);
-    border-color: var(--color-white-100);
-    background-color: transparent;
+@media (min-width: 768px) {
+    .heading-two {
+        font-size: 44px;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+    }
 }
 
-.btn.secondary:hover {
-    border: none;
-    color: var(--color-black-100);
-    background-color: var(--color-white-100);
-
+.title-one {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
 }
 
-.btn-socials {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 44px;
-    height: 44px;
-
-    border: 1px solid;
-    border-radius: 10px;
+.subtitle-one {
+    font-size: 12px;
 }
 
-.btn-socials.on-white {
-    background-color: transparent;
-    fill: var(--color-black-80);
-    border-color: var(--color-black-10);
+.body {
+    font-size: 14px;
+    line-height: 1.25;
 }
 
-.btn-socials.on-white:hover {
-    background-color: var(--color-black-80);
-    fill: var(--color-white-100)
-}
-
-.btn-socials.on-black {
-    background-color: transparent;
-    fill: var(--color-white-80);
-    border-color: var(--color-black-80);
-}
-
-.btn-socials.on-black:hover {
-    background-color: var(--color-white-100);
-    fill: var(--color-white-80)
-}
+/* #endregion Fonts*/
