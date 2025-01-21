@@ -13,7 +13,6 @@ button {
   -moz-osx-font-smoothing: inherit;
 
   /* Corrects inability to style clickable `input` types in iOS */
-  -webkit-appearance: none;
 }
 
 h1,
