@@ -15,3 +15,14 @@ button {
     /* Corrects inability to style clickable `input` types in iOS */
     -webkit-appearance: none;
 }
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+a {
+    color: currentColor;
+    text-decoration: none;
+}
