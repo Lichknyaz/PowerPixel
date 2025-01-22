@@ -21,6 +21,8 @@ if (
   currentPage === '/PowerPixel/favorites.html'
 ) {
   filterMuscleBtn.classList.remove('active');
+} else {
+  filterMuscleBtn.classList.remove('active');
 }
 
 let page = 1;
