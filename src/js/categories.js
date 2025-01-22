@@ -7,6 +7,14 @@ const excercisesMusclesList = document.querySelector(
   '.excercises-categories-list'
 );
 
+const currentPage = window.location.pathname;
+
+if (currentPage === '/index.html') {
+  filterMuscleBtn.classList.add('active');
+} else if (currentPage === '/favorites.html') {
+  filterMuscleBtn.classList.remove('active');
+}
+
 let page = 1;
 
 async function handleFilterMuscleBtn() {
