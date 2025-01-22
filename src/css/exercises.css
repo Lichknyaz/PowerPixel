@@ -6,7 +6,7 @@
     padding: 64px 0 100px;
   }
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1440px) {
   .exercises {
     padding-bottom: 132px;
   }
@@ -22,7 +22,7 @@
     gap: 32px;
   }
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1440px) {
   .title-filter-container {
     gap: unset;
     flex-direction: row;
@@ -142,7 +142,7 @@
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1440px) {
   .exercises-wrapper {
     flex-direction: row;
   }
@@ -212,7 +212,7 @@
   line-height: 1.5;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1440px) {
   .categories-list {
     flex-direction: row;
     flex-wrap: wrap;
