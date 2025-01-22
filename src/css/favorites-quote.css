@@ -12,6 +12,7 @@
     column-gap: 16px;
   }
 }
+
 @media only screen and (min-width: 1200px) {
   .favorites-sidebar {
     row-gap: 16px;
@@ -19,7 +20,7 @@
   }
 }
 
-.favorites.sidebar-quote-wrapper ,
+.favorites.sidebar-quote-wrapper,
 .favorites.sidebar-suggestion-wrapper {
   background-color: var(--color-black-100);
   padding: 20px;
@@ -36,21 +37,26 @@
 }
 
 @media only screen and (min-width: 768px) {
+
   .favorites.sidebar-suggestion-wrapper,
   .favorites.quote-image {
     width: 344px;
     height: 141px;
   }
-  .favorites.sidebar-suggestion-wrapper{
+
+  .favorites.sidebar-suggestion-wrapper {
     padding: 40px;
   }
+
   .favorites.sidebar-quote-wrapper {
     flex-grow: 1;
     max-width: 100%;
     padding: 40px;
   }
 }
+
 @media only screen and (min-width: 1200px) {
+
   .favorites.sidebar-suggestion-wrapper,
   .favorites.quote-image {
     width: 239px;
@@ -62,5 +68,20 @@
 }
 
 .favorites-added-exercises {
+  /* Додаткові стилі для блоку вправ */
+}
 
+/* Стилі для повідомлення про відсутність вправ */
+.no-favorites-message {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.25rem;
+  color: #333;
+  /* Основний колір тексту */
+  text-align: center;
+  margin: 20px auto;
+  /* Відступи згори та знизу */
+  max-width: 600px;
+  /* Максимальна ширина для тексту */
+  line-height: 1.6;
+  /* Висота рядка для кращої читабельності */
 }
