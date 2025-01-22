@@ -6,23 +6,27 @@ function setActiveLink(activeLink) {
   activeLink.parentElement.classList.add('active');
 }
 
+window.addEventListener('load', () => {
+  const currentPath = window.location.pathname;
+  const matchingLink = [...navLinks].find(link =>
+    currentPath.includes(link.getAttribute('href'))
+  );
+
+  if (matchingLink) {
+    setActiveLink(matchingLink);
+  } else {
+    const defaultLink = navLinks[0];
+    setActiveLink(defaultLink);
+  }
+});
+
 navLinks.forEach(link => {
   link.addEventListener('click', event => {
     localStorage.setItem(
       'activeLink',
       event.currentTarget.getAttribute('href')
     );
-  });
-});
 
-window.addEventListener('load', () => {
-  const activeLink = localStorage.getItem('activeLink');
-  if (activeLink) {
-    const matchingLink = [...navLinks].find(
-      link => link.getAttribute('href') === activeLink
-    );
-    if (matchingLink) {
-      setActiveLink(matchingLink);
-    }
-  }
+    setActiveLink(event.currentTarget);
+  });
 });
