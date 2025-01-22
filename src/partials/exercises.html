@@ -60,16 +60,36 @@
               <use href="./img/sprite.svg#inverted-commas"></use>
             </svg>
           </div>
-          <picture>
-            <img
-              class="quote-image border-radius"
-              src=""
-              alt="girls"
-              width="335"
-              height="242"
-              loading="lazy"
-            />
-          </picture>
+          <div class="quote-image border-radius">
+            <picture>
+              <source
+                media="(min-width:1440px)"
+                srcset="
+              ./img/quote/quote-desktop-1x.jpg 1x,
+              ./img/quote/quote-desktop-2x.jpg 2x
+            "
+                type="image/jpeg"
+              />
+              <source
+                media="(min-width:768px)"
+                srcset="
+              ./img/quote/quote-tablet-1x.jpg 1x,
+              ./img/quote/quote-tablet-2x.jpg 2x
+            "
+                type="image/jpeg"
+              />
+              <img
+                src="./img/quote/quote-mobile-1x.jpg"
+                srcset="
+              ./img/quote/quote-mobile-1x.jpg 1x,
+              ./img/quote/quote-mobile-2x.jpg 2x
+            "
+                alt="Women sportswear taking break"
+                title="Women sportswear taking break"
+                loading="lazy"
+              />
+            </picture>
+          </div>
           <div class="sidebar-suggestion-wrapper border-radius">
             <div class="icon-wrapper-dumbbell">
               <svg class="icon suggestion-dumbbell" width="20" height="20">
