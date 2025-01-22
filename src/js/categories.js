@@ -1,69 +1,80 @@
 import { fetchCategories } from './api.js';
-import axios from 'axios';
 
-const inputSearch = document.querySelector('.exercises-filter-input');
 const filterMuscleBtn = document.querySelector('button[data-name="Muscles"]');
-const excercisesMusclesList = document.querySelector(
-  '.excercises-categories-list'
+const filterBodyPartsBtn = document.querySelector(
+  'button[data-name="Body parts"]'
 );
-
-const currentPage = window.location.pathname;
-
-if (
-  currentPage === '/PowerPixel' ||
-  currentPage === '/PowerPixel/index.html' ||
-  currentPage === '/' ||
-  currentPage === '/index.html'
-) {
-  filterMuscleBtn.classList.add('active');
-} else if (
-  currentPage === '/favorites.html' ||
-  currentPage === '/PowerPixel/favorites.html'
-) {
-  filterMuscleBtn.classList.remove('active');
-} else {
-  filterMuscleBtn.classList.remove('active');
-}
+const filterEquipmentBtn = document.querySelector(
+  'button[data-name="Equipment"]'
+);
+const exercisesList = document.querySelector('.exercises-categories-list');
 
 let page = 1;
+let categoriesExcercises;
 
-async function handleFilterMuscleBtn() {
-  if (filterMuscleBtn.classList.contains('active')) {
-    try {
-      const categoriesExcercises = await fetchCategories('Muscles', 1);
+filterMuscleBtn.addEventListener('click', async event => {
+  filterMuscleBtn.classList.add('active');
+  filterEquipmentBtn.classList.remove('active');
+  filterBodyPartsBtn.classList.remove('active');
 
-      console.log(categoriesExcercises);
+  creatGalleryMarkup('Muscles');
+});
 
-      const musclesExcercisesMarkup = createGalleryCards(
-        categoriesExcercises.results
-      );
-      excercisesMusclesList.insertAdjacentHTML(
-        'beforeend',
-        musclesExcercisesMarkup
-      );
-    } catch (error) {
-      console.error('Error fetching categories:', error);
-    }
-  } else {
-    musclesExcercisesMarkup.innerHTML = '';
-    return;
+filterBodyPartsBtn.addEventListener('click', async event => {
+  filterMuscleBtn.classList.remove('active');
+  filterEquipmentBtn.classList.remove('active');
+  filterBodyPartsBtn.classList.add('active');
+
+  creatGalleryMarkup('Body parts');
+});
+
+filterEquipmentBtn.addEventListener('click', async event => {
+  filterMuscleBtn.classList.remove('active');
+  filterEquipmentBtn.classList.add('active');
+  filterBodyPartsBtn.classList.remove('active');
+
+  creatGalleryMarkup('Equipment');
+});
+
+async function creatGalleryMarkup(filter) {
+  try {
+    categoriesExcercises = await fetchCategories(filter, page);
+
+    exercisesList.innerHTML = '';
+    exercisesList.insertAdjacentHTML(
+      'beforeend',
+      createGalleryCards(categoriesExcercises.results)
+    );
+  } catch (error) {
+    console.log('Error fetching categories:', error);
   }
 }
 
-handleFilterMuscleBtn();
+export async function homePageCategoriesLayout() {
+  filterMuscleBtn.classList.add('active');
+  creatGalleryMarkup('Muscles');
+}
+
+exercisesList.addEventListener('click', event => {
+  const listItem = event.target.closest('.exercises-categories-item');
+  if (listItem) {
+    const getTarget = listItem.getAttribute('data-body-part');
+    console.log(getTarget);
+  }
+});
 
 function createGalleryCards(images) {
   return images
     .map(image => {
       const { filter, name, imgURL } = image;
-      return ` <li class="excercises-categories-item" data-body-part='${name}'>
-			<button type="button" class="excercises-categories-btn"  alt="${name}" style='background: linear-gradient(0deg, rgba(17, 17, 17, 0.50) 0%, rgba(17, 17, 17, 0.50) 100%), url(${imgURL}) no-repeat;
+      return ` <li class="exercises-categories-item" data-body-part='${name}'>
+			<button type="button" class="exercises-categories-btn"  alt="${name}" style='background: linear-gradient(0deg, rgba(17, 17, 17, 0.50) 0%, rgba(17, 17, 17, 0.50) 100%), url(${imgURL}) no-repeat;
 background-size: cover;
 	background-position: center;'
 
-				<div class="excercises-categories-info">
-					<h3 class="excercises-category-title">${name}</h3>
-					<p class="excercises-category-descr">${filter}</p>
+				<div class="exercises-categories-info">
+					<h3 class="exercises-category-title">${name}</h3>
+					<p class="exercises-category-descr">${filter}</p>
 				</div>
 			</button>
 		</li> `;
