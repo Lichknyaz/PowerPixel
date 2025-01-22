@@ -12,7 +12,7 @@
     column-gap: 16px;
   }
 }
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1440px) {
   .exercises-sidebar {
     flex-direction: column;
     row-gap: 32px;
@@ -50,7 +50,7 @@
     height: 249px;
   }
 }
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1440px) {
   .sidebar-quote-wrapper,
   .sidebar-suggestion-wrapper,
   .quote-image {
@@ -88,7 +88,7 @@
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1440px) {
   .sidebar-quote-title,
   .sidebar-suggestion-title{
     font-size: 24px;
@@ -127,23 +127,12 @@
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1440px) {
   .sidebar-quote
   {
     margin-bottom: 8px;
   }
 }
-
-
-/*@media only screen and (min-width: 768px) {*/
-/*  .sidebar-quote,*/
-/*  .sidebar-quote-author,*/
-/*  .sidebar-suggestion,*/
-/*  .sidebar-suggestion-info {*/
-/*    font-size: 14px;*/
-/*    line-height: 18px; !* 128.571% *!*/
-/*  }*/
-/*}*/
 
 .sidebar-quote-author
  {
@@ -206,11 +195,11 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 5;
-
 }
 
-.quote-image {
+.quote-image img {
+  width: 100%;
   overflow: hidden;
-  background-color: red;
+  border-radius: 20px;
   object-fit: cover;
 }

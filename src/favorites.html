@@ -57,16 +57,36 @@
                   </p>
                 </div>
               </div>
-              <picture>
-                <img
-                  class="favorites quote-image border-radius"
-                  src=""
-                  alt="girls"
-                  width="335"
-                  height="242"
-                  loading="lazy"
-                />
-              </picture>
+              <div class="favorites quote-image border-radius">
+                <picture>
+                  <source
+                    media="(min-width:1440px)"
+                    srcset="
+                ./img/quote/favorites-quote-desktop-1x.jpg 1x,
+                ./img/quote/favorites-quote-desktop-2x.jpg 2x
+               "
+                    type="image/jpeg"
+                  />
+                  <source
+                    media="(min-width:768px)"
+                    srcset="
+                ./img/quote/favorites-quote-tablet-1x.jpg 1x,
+                ./img/quote/favorites-quote-tablet-2x.jpg 2x
+               "
+                    type="image/jpeg"
+                  />
+                  <img
+                    src="./img/quote/favorites-quote-mobile-1x.jpg"
+                    srcset="
+                  ./img/quote/favorites-quote-mobile-1x.jpg 1x,
+                  ./img/quote/favorites-quote-mobile-2x.jpg 2x
+                "
+                    alt="Women sportswear taking break"
+                    title="Women sportswear taking break"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
             </div>
             <div class="favorites-added-exercises">
               <!-- Message for no favorites -->
