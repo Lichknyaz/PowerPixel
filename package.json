@@ -17,10 +17,6 @@
   "author": "Kateryna Velychko <kate2603.kv@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.7.9",
-    "rollup": "^2.79.0",
-    "toastify-js": "^1.12.0",
-    "vite-plugin-full-reload": "^1.2.0",
-    "vite-plugin-html-inject": "^1.1.2"
+    "axios": "^0.27.2"
   }
 }
