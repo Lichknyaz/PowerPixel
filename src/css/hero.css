@@ -1,6 +1,5 @@
 .section.hero {
     margin-top: 60px;
-    margin-bottom: 40px;
 }
 
 .hero-tags-desktop-wrapper {
@@ -63,13 +62,13 @@
     font-family: "DM Sans";
     font-size: 14px;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
     .section.hero {
         margin-top: 80px;
-        margin-bottom: 64px;
     }
     
     .section.hero p {
@@ -114,8 +113,7 @@
 /* Styles for Desktop devices */
 @media only screen and (min-width: 1200px) {
     .section.hero {
-        margin-top: 96px;
-        margin-bottom: 64px;
+        margin-top: 76px;
     }
 
     .hero-tags {
