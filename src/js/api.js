@@ -29,9 +29,14 @@ export const fetchCategories = async (filter = 'Muscles', page = 1) => {
       },
     });
 
+    if (!response.data) {
+      throw new Error('No data received');
+    }
+
     return response.data;
   } catch (error) {
     console.error('Error fetching categories:', error);
+    throw new Error('Failed to fetch categories. Please try again later.');
   }
 };
 
