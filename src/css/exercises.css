@@ -129,6 +129,25 @@
   background-color: #242424;
   border-radius: 2px;
 }
+
+.exercises-wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 80px;
+}
+
+@media only screen and (min-width: 768px) {
+  .exercises-wrapper {
+    row-gap: 68px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .exercises-wrapper {
+    flex-direction: row;
+  }
+}
+
 /* -------------------------List Mark Up--------------------------- */
 .excercises-categories-list {
   display: flex;
