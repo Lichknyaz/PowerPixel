@@ -22,7 +22,45 @@
 
     <main>
       <!-- Loads the specified .html file -->
-      <load src="./partials/exercises.html" />
+      <section class="favorites">
+        <div class="container">
+            <div class="favorites-content">
+              <div class="favorites-sidebar">
+                <div class="favorites sidebar-quote-wrapper border-radius">
+                  <div class="icon-wrapper">
+                    <svg class="icon quote-men" width="18" height="20">
+                      <use href="./img/sprite.svg#men"></use>
+                    </svg>
+                  </div>
+                  <div class="favorites sidebar-quote-text">
+                    <p class="favorites sidebar-quote-title">Quote of the day</p>
+                    <p class="favorites sidebar-quote overflow-kit" name="sidebar-quote"></p>
+                    <p class="favorites sidebar-quote-author"></p>
+                  </div>
+                  <svg class="icon inverted-commas" width="20" height="20">
+                    <use href="./img/sprite.svg#inverted-commas"></use>
+                  </svg>
+                </div>
+                <div class="favorites sidebar-suggestion-wrapper border-radius">
+                  <div class="icon-wrapper-dumbbell">
+                    <svg class="icon suggestion-dumbbell" width="20" height="20">
+                      <use href="./img/sprite.svg#dumbbell"></use>
+                    </svg>
+                  </div>
+                  <div class="favorites sidebar-suggestion-text">
+                    <p class="favorites sidebar-suggestion-title">110 min</p>
+                    <p class="favorites sidebar-suggestion">Daily norm of sports</p>
+                  </div>
+                </div>
+                <picture>
+                  <img class="favorites quote-image border-radius" src="" alt="girls" width="335" height="242" loading="lazy">
+                </picture>
+              </div>
+              <div class="favorites-added-exercises"></div>
+            </div>
+          </div>
+      </section>
+
     </main>
 
     <script type="module" src="./main.js"></script>
