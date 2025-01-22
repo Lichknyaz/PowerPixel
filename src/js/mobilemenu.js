@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (menuButton && mobileMenu) {
     menuButton.addEventListener('click', function () {
-      console.log('!!!');
       mobileMenu.classList.add('is-open');
       menuCloseButton.style.display = 'block';
     });

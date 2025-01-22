@@ -23,14 +23,13 @@
   right: 0;
   width: 100%;
   height: 100dvh;
-  color: var(--color-white);
   background-color: rgb(var(--color-black-100));
   border: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   transform: translateX(100%);
-  animation-duration: 0.5s;
+  animation-duration: 1s;
   animation-name: slidein;
   transition: transform 0.5s ease-in-out;
   z-index: 300;
@@ -43,23 +42,22 @@
   width: 32px;
   height: 32px;
   padding: 0;
-  color: white;
-  fill: white;
-  background-color: transparent;
+  stroke-width: 1;
   border: none;
+  stroke: rgba(244, 244, 244, 1);
+  background-color: transparent;
+  fill: rgba(244, 244, 244, 1);
+
   cursor: pointer;
   z-index: 400;
 }
 
 .js-close-menu svg {
-  fill: var(--color-white-80);
   width: 32px;
   height: 32px;
 }
 
 .menu-container {
-  position: relative;
-  z-index: 300;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -70,6 +68,7 @@
   padding-top: 248px;
   list-style: none;
   display: flex;
+  gap: 16px;
   flex-direction: column;
   align-items: center;
   text-align: center;
@@ -90,13 +89,8 @@
   color: var(--color-white);
 }
 
-.social-container-list {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin: 20px 0;
-  background-color: white;
+.social-media-links {
+  margin-bottom: 20px;
 }
 
 .social-container-item {
