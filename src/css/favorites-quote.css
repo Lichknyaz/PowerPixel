@@ -1,0 +1,66 @@
+.favorites-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 16px;
+    column-gap: 16px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .favorites-sidebar {
+    row-gap: 16px;
+    max-width: 494px;
+  }
+}
+
+.favorites.sidebar-quote-wrapper ,
+.favorites.sidebar-suggestion-wrapper {
+  background-color: var(--color-black-100);
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  gap: 16px;
+  font: inherit;
+}
+
+.favorites.sidebar-suggestion-wrapper {
+  background-color: var(--color-white-100);
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites.sidebar-suggestion-wrapper,
+  .favorites.quote-image {
+    width: 344px;
+    height: 141px;
+  }
+  .favorites.sidebar-suggestion-wrapper{
+    padding: 40px;
+  }
+  .favorites.sidebar-quote-wrapper {
+    flex-grow: 1;
+    max-width: 100%;
+    padding: 40px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .favorites.sidebar-suggestion-wrapper,
+  .favorites.quote-image {
+    width: 239px;
+  }
+}
+
+.favorites.quote-image {
+  height: 119px;
+}
+
+.favorites-added-exercises {
+
+}
