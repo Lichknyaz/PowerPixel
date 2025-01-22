@@ -5,4 +5,5 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 import './js/mobilemenu';
+import './js/categories.js';
 import './js/quote.js';
