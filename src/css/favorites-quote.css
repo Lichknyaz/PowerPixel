@@ -20,24 +20,12 @@
   }
 }
 
-.favorites.sidebar-quote-wrapper,
-.favorites.sidebar-suggestion-wrapper {
-  background-color: var(--color-black-100);
-  padding: 20px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  position: relative;
-  gap: 16px;
-  font: inherit;
-}
 
 .favorites.sidebar-suggestion-wrapper {
-  background-color: var(--color-white-100);
+  display: block;
 }
 
 @media only screen and (min-width: 768px) {
-
   .favorites.sidebar-suggestion-wrapper,
   .favorites.quote-image {
     width: 344px;
@@ -45,7 +33,7 @@
   }
 
   .favorites.sidebar-suggestion-wrapper {
-    padding: 40px;
+    padding: 25px;
   }
 
   .favorites.sidebar-quote-wrapper {
@@ -64,6 +52,25 @@
 
 .favorites.quote-image {
   height: 119px;
+}
+
+.favorites.icon-wrapper-dumbbell {
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-white-100);
+  margin-bottom: 15px;
+}
+
+.favorites.suggestion-dumbbell {
+  fill: var(--color-black-100);
+}
+
+.favorites.sidebar-suggestion {
+  margin-bottom: 0;
+}
+
+.favorites.sidebar-suggestion-title {
+  margin-bottom: 6px;
 }
 
 .favorites-added-exercises {
