@@ -46,14 +46,16 @@
               </div>
               <div class="favorites sidebar-suggestion-wrapper border-radius">
                 <div class="favorites icon-wrapper-dumbbell">
-                  <svg class="favorites icon suggestion-dumbbell" width="20" height="20">
+                  <svg
+                    class="favorites icon suggestion-dumbbell"
+                    width="20"
+                    height="20"
+                  >
                     <use href="./img/sprite.svg#dumbbell"></use>
                   </svg>
                 </div>
-                  <p class="favorites sidebar-suggestion-title">110 min</p>
-                  <p class="favorites sidebar-suggestion">
-                    Daily norm of sports
-                  </p>
+                <p class="favorites sidebar-suggestion-title">110 min</p>
+                <p class="favorites sidebar-suggestion">Daily norm of sports</p>
               </div>
               <div class="favorites quote-image border-radius">
                 <picture>
@@ -100,11 +102,19 @@
           </div>
         </div>
       </section>
+      <div class="scroll-container">
+        <a class="scroll-icon" aria-label="link to top">
+          <svg>
+            <use href="./img/sprite.svg#scroll-up"></use>
+          </svg>
+        </a>
+      </div>
     </main>
     <load src="./partials/footer.html" />
 
     <script type="module" src="./main.js"></script>
     <script src="./js/favorites.js"></script>
     <script src="./js/header-toggle.js"></script>
+    <script src="./js/scroll-up.js"></script>
   </body>
 </html>
