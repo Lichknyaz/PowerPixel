@@ -1,7 +1,9 @@
 import { initializeSubscribeEmail } from './js/subscribeEmail.js';
+import { homePageCategoriesLayout } from './js/categories.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initializeSubscribeEmail();
+  homePageCategoriesLayout();
 });
 
 import './js/mobilemenu';
