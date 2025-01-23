@@ -1,0 +1,46 @@
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+}
+
+.scroll-container {
+  width: 64px;
+  height: 64px;
+  background-color: var(--color-black-100);
+  border-radius: 50%;
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  text-align: center;
+}
+
+.scroll-container:hover {
+  background-color: var(--color-black-80);
+}
+
+.scroll-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media only screen and (min-width: 768px) {
+  .scroll-container {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .scroll-icon svg {
+    width: 36px;
+    height: 36px;
+  }
+}
