@@ -4,7 +4,6 @@ const quoteText = document.querySelector(".sidebar-quote");
 const quoteAuthor = document.querySelector(".sidebar-quote-author")
 
 const storedQuoteDate = localStorage.getItem("quoteDate");
-console.log(storedQuoteDate);
 const todayDate = new Date()
 
 const displayQuote = async () => {
