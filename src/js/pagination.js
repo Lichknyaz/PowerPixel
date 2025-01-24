@@ -9,7 +9,7 @@ const btnLastPage = arrowButtons[1].children[1].children[0];
 
 let activePage;
 
-// Сам Fetcher замінити на наш
+// Сам Fetcher замінити на наш 
 function fetchCategories(filter = 'Muscles', page = 1) {
     const response = fetch(`https://your-energy.b.goit.study/api/filters?filter=${filter}&page=${page}&limit=10`)
         .then(result => { return result.json() })
@@ -23,7 +23,6 @@ function fetchCategories(filter = 'Muscles', page = 1) {
                 for (let i = 0; i < pagesNo; i++) {
                     HTMLArray.push(`<li><button class="pagination-page" data-page="${i + 1}">${i + 1}</button></li>`)
                 };
-                console.log(HTMLArray)
                 pagesList.innerHTML = HTMLArray.join('')
             };
             // Згенерована сторінка є активною
