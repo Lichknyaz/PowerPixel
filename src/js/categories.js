@@ -1,4 +1,5 @@
 import { fetchCategories, fetchExercises } from './api.js';
+import { hideSearch, showSearch } from './search.js';
 
 const filterMuscleBtn = document.querySelector('button[data-name="Muscles"]');
 const filterBodyPartsBtn = document.querySelector(
@@ -7,7 +8,9 @@ const filterBodyPartsBtn = document.querySelector(
 const filterEquipmentBtn = document.querySelector(
   'button[data-name="Equipment"]'
 );
-export const exercisesList = document.querySelector('.exercises-categories-list');
+export const exercisesList = document.querySelector(
+  '.exercises-categories-list'
+);
 
 let page = 1;
 let categoriesExcercises;
@@ -17,9 +20,10 @@ filterMuscleBtn.addEventListener('click', async event => {
   filterEquipmentBtn.classList.remove('active');
   filterBodyPartsBtn.classList.remove('active');
 
-  exercisesListContainer.classList.remove("hidden");
-  filteredExerciseListContainer.classList.add("hidden");
+  exercisesListContainer.classList.remove('hidden');
+  filteredExerciseListContainer.classList.add('hidden');
 
+  hideSearch();
   creatGalleryMarkup('Muscles');
 });
 
@@ -28,9 +32,10 @@ filterBodyPartsBtn.addEventListener('click', async event => {
   filterEquipmentBtn.classList.remove('active');
   filterBodyPartsBtn.classList.add('active');
 
-  exercisesListContainer.classList.remove("hidden");
-  filteredExerciseListContainer.classList.add("hidden");
+  exercisesListContainer.classList.remove('hidden');
+  filteredExerciseListContainer.classList.add('hidden');
 
+  hideSearch();
   creatGalleryMarkup('Body parts');
 });
 
@@ -39,9 +44,10 @@ filterEquipmentBtn.addEventListener('click', async event => {
   filterEquipmentBtn.classList.add('active');
   filterBodyPartsBtn.classList.remove('active');
 
-  exercisesListContainer.classList.remove("hidden");
-  filteredExerciseListContainer.classList.add("hidden");
+  exercisesListContainer.classList.remove('hidden');
+  filteredExerciseListContainer.classList.add('hidden');
 
+  hideSearch();
   creatGalleryMarkup('Equipment');
 });
 
@@ -83,17 +89,22 @@ background-size: cover;
     .join('');
 }
 
-
 // List of exercises
 
-const filteredExerciseList = document.querySelector(".filtered-exercises-categories-list")
-const exercisesListContainer = document.querySelector(".exercises-list-container")
-const filteredExerciseListContainer = document.querySelector(".filtered-exercises-list-container")
-let fetchParams = {}
+const filteredExerciseList = document.querySelector(
+  '.filtered-exercises-categories-list'
+);
+const exercisesListContainer = document.querySelector(
+  '.exercises-list-container'
+);
+const filteredExerciseListContainer = document.querySelector(
+  '.filtered-exercises-list-container'
+);
+let fetchParams = {};
 
-exercisesList.addEventListener('click', async event =>  {
+exercisesList.addEventListener('click', async event => {
   const listItem = event.target.closest('.exercises-categories-item');
-  filteredExerciseListContainer.classList.remove("hidden");
+  filteredExerciseListContainer.classList.remove('hidden');
 
   // Fetch parameters for exercises
   if (listItem) {
@@ -107,33 +118,36 @@ exercisesList.addEventListener('click', async event =>  {
         break;
       case 'Equipment':
         category = 'equipment';
-        break
+        break;
     }
     // Add pagination
     const target = listItem.getAttribute('data-body-part');
     fetchParams = {
-      [category]:  target,
+      [category]: target,
       keyword: '',
       page: 1,
       limit: 10,
-    }
-    exercisesListContainer.classList.add("hidden");
+    };
+    exercisesListContainer.classList.add('hidden');
   }
 
   //Log parameters
   console.log(fetchParams);
-  const filteredExercises = await fetchExercises({...fetchParams});
+  const filteredExercises = await fetchExercises({ ...fetchParams });
 
   // Log results
-  console.log(filteredExercises.results)
+  console.log(filteredExercises.results);
 
-  filteredExerciseList.innerHTML = drawFilteredExercises(filteredExercises.results);
+  showSearch();
+
+  filteredExerciseList.innerHTML = drawFilteredExercises(
+    filteredExercises.results
+  );
 });
 
-
-const drawFilteredExercises = (items) => {
+const drawFilteredExercises = items => {
   return items
-    .map ((item) => {
+    .map(item => {
       return `<li>
                 <div class="filtered-exercises-categories-list-item">
                   <svg class="icon" aria-hidden="true" width="24" height="24">
@@ -151,7 +165,7 @@ const drawFilteredExercises = (items) => {
                   </p>
                     <button class="start-button">Start</button>
                 </div>
-              </li>`
+              </li>`;
     })
-    .join('')
-}
+    .join('');
+};
