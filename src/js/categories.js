@@ -1,4 +1,4 @@
-import { fetchCategories } from './api.js';
+import { fetchCategories, fetchExercises } from './api.js';
 
 const filterMuscleBtn = document.querySelector('button[data-name="Muscles"]');
 const filterBodyPartsBtn = document.querySelector(
@@ -7,7 +7,7 @@ const filterBodyPartsBtn = document.querySelector(
 const filterEquipmentBtn = document.querySelector(
   'button[data-name="Equipment"]'
 );
-const exercisesList = document.querySelector('.exercises-categories-list');
+export const exercisesList = document.querySelector('.exercises-categories-list');
 
 let page = 1;
 let categoriesExcercises;
@@ -17,6 +17,9 @@ filterMuscleBtn.addEventListener('click', async event => {
   filterEquipmentBtn.classList.remove('active');
   filterBodyPartsBtn.classList.remove('active');
 
+  exercisesListContainer.classList.remove("hidden");
+  filteredExerciseListContainer.classList.add("hidden");
+
   creatGalleryMarkup('Muscles');
 });
 
@@ -25,6 +28,9 @@ filterBodyPartsBtn.addEventListener('click', async event => {
   filterEquipmentBtn.classList.remove('active');
   filterBodyPartsBtn.classList.add('active');
 
+  exercisesListContainer.classList.remove("hidden");
+  filteredExerciseListContainer.classList.add("hidden");
+
   creatGalleryMarkup('Body parts');
 });
 
@@ -32,6 +38,9 @@ filterEquipmentBtn.addEventListener('click', async event => {
   filterMuscleBtn.classList.remove('active');
   filterEquipmentBtn.classList.add('active');
   filterBodyPartsBtn.classList.remove('active');
+
+  exercisesListContainer.classList.remove("hidden");
+  filteredExerciseListContainer.classList.add("hidden");
 
   creatGalleryMarkup('Equipment');
 });
@@ -55,19 +64,11 @@ export async function homePageCategoriesLayout() {
   creatGalleryMarkup('Muscles');
 }
 
-exercisesList.addEventListener('click', event => {
-  const listItem = event.target.closest('.exercises-categories-item');
-  if (listItem) {
-    const getTarget = listItem.getAttribute('data-body-part');
-    console.log(getTarget);
-  }
-});
-
 function createGalleryCards(images) {
   return images
     .map(image => {
       const { filter, name, imgURL } = image;
-      return ` <li class="exercises-categories-item" data-body-part='${name}'>
+      return ` <li class="exercises-categories-item" data-body-part='${name}' data-category-filter='${filter}'>
 			<button type="button" class="exercises-categories-btn"  alt="${name}" style='background: linear-gradient(0deg, rgba(17, 17, 17, 0.50) 0%, rgba(17, 17, 17, 0.50) 100%), url(${imgURL}) no-repeat;
 background-size: cover;
 	background-position: center;'
@@ -80,4 +81,77 @@ background-size: cover;
 		</li> `;
     })
     .join('');
+}
+
+
+// List of exercises
+
+const filteredExerciseList = document.querySelector(".filtered-exercises-categories-list")
+const exercisesListContainer = document.querySelector(".exercises-list-container")
+const filteredExerciseListContainer = document.querySelector(".filtered-exercises-list-container")
+let fetchParams = {}
+
+exercisesList.addEventListener('click', async event =>  {
+  const listItem = event.target.closest('.exercises-categories-item');
+  filteredExerciseListContainer.classList.remove("hidden");
+
+  // Fetch parameters for exercises
+  if (listItem) {
+    let category = '';
+    switch (listItem.getAttribute('data-category-filter')) {
+      case 'Muscles':
+        category = 'muscles';
+        break;
+      case 'Body parts':
+        category = 'bodypart';
+        break;
+      case 'Equipment':
+        category = 'equipment';
+        break
+    }
+    // Add pagination
+    const target = listItem.getAttribute('data-body-part');
+    fetchParams = {
+      [category]:  target,
+      keyword: '',
+      page: 1,
+      limit: 10,
+    }
+    exercisesListContainer.classList.add("hidden");
+  }
+
+  //Log parameters
+  console.log(fetchParams);
+  const filteredExercises = await fetchExercises({...fetchParams});
+
+  // Log results
+  console.log(filteredExercises.results)
+
+  filteredExerciseList.innerHTML = drawFilteredExercises(filteredExercises.results);
+});
+
+
+const drawFilteredExercises = (items) => {
+  return items
+    .map ((item) => {
+      return `<li>
+                <div class="filtered-exercises-categories-list-item">
+                  <svg class="icon" aria-hidden="true" width="24" height="24">
+                    <use href="./img/sprite.svg#men"></use>
+                  </svg>
+                  <h3>${item.name}</h3>
+                  <p><strong>Calories:</strong> ${item.burnedCalories} / 3 min</p>
+                  <p><strong>Body Part:</strong> ${item.bodyPart}</p>
+                  <p><strong>Target:</strong> ${item.target}</p>
+                  <p><strong>Rating:</strong>
+                    <svg class="star-icon" aria-hidden="true" width="24" height="24">
+                      <use href="./img/sprite.svg#stars"></use>
+                    </svg>
+                    ${item.rating}
+                  </p>
+                    <button class="start-button">Start</button>
+                </div>
+              </li>`
+    })
+    .join('')
 }

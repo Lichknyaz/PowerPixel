@@ -5,6 +5,8 @@ button {
   font-family: inherit;
   color: currentColor;
   cursor: pointer;
+  background: transparent;
+  border: none;
 
   /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
   line-height: normal;
