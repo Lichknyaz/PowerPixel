@@ -19,9 +19,10 @@
 @import url('./footer.css');
 @import url('./quote.css');
 @import url('./social-links.css');
-/*@import url('./pagination.css');*/
+@import url('./pagination.css');
 @import url('./favorites-quote.css');
 @import url('./loader.css');
 @import url('./scroll-up.css');
 @import url('./search.css');
 @import url('./exercises-filtered.css');
+@import url('./exercise-modal.css');

@@ -3,15 +3,21 @@ document.addEventListener('DOMContentLoaded', function () {
   const menuCloseButton = document.querySelector('.js-close-menu');
   const mobileMenu = document.querySelector('.menu-backdrop');
 
-  if (menuButton && mobileMenu) {
-    menuButton.addEventListener('click', function () {
+  if (menuButton && mobileMenu && menuCloseButton) {
+    function openMenu() {
       mobileMenu.classList.add('is-open');
       menuCloseButton.style.display = 'block';
-    });
 
-    menuCloseButton.addEventListener('click', function () {
+      menuCloseButton.addEventListener('click', closeMenu);
+    }
+
+    function closeMenu() {
       mobileMenu.classList.remove('is-open');
       menuCloseButton.style.display = 'none';
-    });
+
+      menuCloseButton.removeEventListener('click', closeMenu);
+    }
+
+    menuButton.addEventListener('click', openMenu);
   }
 });
