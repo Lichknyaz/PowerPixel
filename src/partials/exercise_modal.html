@@ -1,5 +1,10 @@
 <div class="modal-backdrop">
   <div class="modal">
+    <button class="modal-close" aria-label="Close modal">
+      <svg class="modal-close-icon" width="32" height="32">
+        <use href="./img/sprite.svg#cross"></use>
+      </svg>
+    </button>
     <div class="modal-inner">
       <div class="modal-image">
         <img src="../img/exercise_modal/1.jpg" alt="Exercise illustration" />
@@ -8,31 +13,26 @@
       <div class="modal-content">
         <div class="modal-header">
           <h2 class="modal-title">Air Bake</h2>
-          <div class="modal-rating">
+          <div class="modal-rating" id="rating" data-rate="0">
             <span>4.0</span>
             <div class="stars">
-              <svg class="rate-icon" width="18" height="18">
+              <svg class="rate-icon" width="24" height="24">
                 <use href="./img/sprite.svg#stars"></use>
               </svg>
-              <svg class="rate-icon" width="18" height="18">
+              <svg class="rate-icon" width="24" height="24">
                 <use href="./img/sprite.svg#stars"></use>
               </svg>
-              <svg class="rate-icon" width="18" height="18">
+              <svg class="rate-icon" width="24" height="24">
                 <use href="./img/sprite.svg#stars"></use>
               </svg>
-              <svg class="rate-icon" width="18" height="18">
+              <svg class="rate-icon" width="24" height="24">
                 <use href="./img/sprite.svg#stars"></use>
               </svg>
-              <svg class="rate-icon" width="18" height="18">
+              <svg class="rate-icon" width="24" height="24">
                 <use href="./img/sprite.svg#stars"></use>
               </svg>
             </div>
           </div>
-          <button class="modal-close" aria-label="Close modal">
-            <svg class="modal-close-icon" width="32" height="32">
-              <use href="./img/sprite.svg#cross"></use>
-            </svg>
-          </button>
         </div>
 
         <div class="modal-details">
@@ -56,7 +56,7 @@
 
         <!-- Footer -->
         <div class="modal-footer">
-          <button class="modal-favorite">
+          <button class="modal-favorite" data-favorite="false">
             Add to favorites
             <svg class="heart-icon" width="20" height="20">
               <use href="./img/sprite.svg#heart"></use>
