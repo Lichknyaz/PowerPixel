@@ -1,0 +1,93 @@
+.favorites-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 16px;
+    column-gap: 16px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .favorites-sidebar {
+    row-gap: 16px;
+    max-width: 494px;
+  }
+}
+
+
+.favorites.sidebar-suggestion-wrapper {
+  display: block;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites.sidebar-suggestion-wrapper,
+  .favorites.quote-image {
+    width: 344px;
+    height: 141px;
+  }
+
+  .favorites.sidebar-suggestion-wrapper {
+    padding: 25px;
+  }
+
+  .favorites.sidebar-quote-wrapper {
+    flex-grow: 1;
+    max-width: 100%;
+    padding: 40px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .favorites.sidebar-suggestion-wrapper,
+  .favorites.quote-image {
+    width: 239px;
+  }
+}
+
+.favorites.quote-image {
+  height: 119px;
+}
+
+.favorites.icon-wrapper-dumbbell {
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-white-100);
+  margin-bottom: 15px;
+}
+
+.favorites.suggestion-dumbbell {
+  fill: var(--color-black-100);
+}
+
+.favorites.sidebar-suggestion {
+  margin-bottom: 0;
+}
+
+.favorites.sidebar-suggestion-title {
+  margin-bottom: 6px;
+}
+
+.favorites-added-exercises {
+  /* Додаткові стилі для блоку вправ */
+}
+
+/* Стилі для повідомлення про відсутність вправ */
+.no-favorites-message {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.25rem;
+  color: #333;
+  /* Основний колір тексту */
+  text-align: center;
+  margin: 20px auto;
+  /* Відступи згори та знизу */
+  max-width: 600px;
+  /* Максимальна ширина для тексту */
+  line-height: 1.6;
+  /* Висота рядка для кращої читабельності */
+}

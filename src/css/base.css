@@ -6,7 +6,7 @@
   font-weight: 400;
 
   color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
+  background-color: var(--color-gray);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -28,14 +28,16 @@
   --color-black-60: rgba(36, 36, 36, 0.6);
   --color-black-50: rgba(36, 36, 36, 0.5);
   --color-black-10: rgba(36, 36, 36, 0.1);
+  --color-black: #242424;
 
   --color-yellow: rgba(238, 161, 12, 1);
+
+  --color-gray: #f4f4f4;
 }
 
 body {
   display: flex;
   flex-direction: column;
-  min-width: 100vw;
   min-height: 100vh;
   margin: 0;
 }

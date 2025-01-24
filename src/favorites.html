@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Energy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/modern-normalize@3.0.0/modern-normalize.min.css"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <load src="./partials/header.html" />
+
+    <main>
+      <!-- Loads the specified .html file -->
+      <section class="favorites">
+        <div class="container">
+          <div class="favorites-content">
+            <div class="favorites-sidebar">
+              <div class="favorites sidebar-quote-wrapper border-radius">
+                <div class="icon-wrapper">
+                  <svg class="icon quote-men" width="18" height="20">
+                    <use href="./img/sprite.svg#men"></use>
+                  </svg>
+                </div>
+                <div class="favorites sidebar-quote-text">
+                  <p class="favorites sidebar-quote-title">Quote of the day</p>
+                  <p
+                    class="favorites sidebar-quote overflow-kit"
+                    name="sidebar-quote"
+                  ></p>
+                  <p class="favorites sidebar-quote-author"></p>
+                </div>
+                <svg class="icon inverted-commas" width="20" height="20">
+                  <use href="./img/sprite.svg#inverted-commas"></use>
+                </svg>
+              </div>
+              <div class="favorites sidebar-suggestion-wrapper border-radius">
+                <div class="favorites icon-wrapper-dumbbell">
+                  <svg
+                    class="favorites icon suggestion-dumbbell"
+                    width="20"
+                    height="20"
+                  >
+                    <use href="./img/sprite.svg#dumbbell"></use>
+                  </svg>
+                </div>
+                <p class="favorites sidebar-suggestion-title">110 min</p>
+                <p class="favorites sidebar-suggestion">Daily norm of sports</p>
+              </div>
+              <div class="favorites quote-image border-radius">
+                <picture>
+                  <source
+                    media="(min-width:1440px)"
+                    srcset="
+                      ./img/quote/favorites-quote-desktop-1x.jpg 1x,
+                      ./img/quote/favorites-quote-desktop-2x.jpg 2x
+                    "
+                    type="image/jpeg"
+                  />
+                  <source
+                    media="(min-width:768px)"
+                    srcset="
+                      ./img/quote/favorites-quote-tablet-1x.jpg 1x,
+                      ./img/quote/favorites-quote-tablet-2x.jpg 2x
+                    "
+                    type="image/jpeg"
+                  />
+                  <img
+                    src="./img/quote/favorites-quote-mobile-1x.jpg"
+                    srcset="
+                      ./img/quote/favorites-quote-mobile-1x.jpg 1x,
+                      ./img/quote/favorites-quote-mobile-2x.jpg 2x
+                    "
+                    alt="Women sportswear taking break"
+                    title="Women sportswear taking break"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
+            </div>
+            <div class="favorites-added-exercises">
+              <!-- Message for no favorites -->
+              <p class="no-favorites-message" style="display: none">
+                It appears that you haven't added any exercises to your
+                favorites yet. To get started, you can add exercises that you
+                like to your favorites for easier access in the future.
+              </p>
+
+              <!-- Container for favorite exercises -->
+              <div class="favorites-container"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="scroll-container">
+        <a class="scroll-icon" aria-label="link to top">
+          <svg>
+            <use href="./img/sprite.svg#scroll-up"></use>
+          </svg>
+        </a>
+      </div>
+    </main>
+    <load src="./partials/footer.html" />
+
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="./js/exercises.js"></script>
+    <script src="./js/favorites.js"></script>
+    <script src="./js/header-toggle.js"></script>
+    <script src="./js/scroll-up.js"></script>
+  </body>
+</html>
