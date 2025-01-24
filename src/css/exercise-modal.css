@@ -74,7 +74,10 @@
 }
 
 .rate-icon {
-  fill: #ffd700;
+  display: inline-block;
+  stroke-width: 1;
+  stroke: white;
+  fill: white;
 }
 
 .modal-close {
