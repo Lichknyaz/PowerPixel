@@ -1,3 +1,7 @@
+body:has(.modal.is-open) {
+  overflow: hidden;
+}
+
 .modal {
   position: fixed;
   top: 50%;
@@ -5,7 +9,7 @@
   transform: translate(-50%, -50%);
   width: 90%;
   max-width: 800px;
-  background-color: #1c1c1c;
+  background-color: var(--color-black-100);
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   overflow: hidden;
@@ -13,20 +17,27 @@
   color: #f4f4f4;
   display: flex;
   flex-direction: column;
+  display: none;
+}
+
+.modal.is-open {
+  display: flex;
 }
 
 .modal-inner {
   display: flex;
   flex-direction: row;
   height: 100%;
+  gap: 32px;
 }
 
 .modal-image {
   flex: 1 1 40%;
-  background-color: #2a2a2a;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 704px;
+  height: 486px;
 }
 
 .modal-image img {
@@ -44,6 +55,7 @@
 
 .modal-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 16px;
@@ -111,9 +123,16 @@
 }
 
 .modal-details p {
+  flex: 1 1 calc(25% - 16px);
   margin: 0;
-  flex: 1 1 calc(50% - 16px);
   line-height: 1.4;
+  text-align: left;
+}
+
+.modal-details p strong {
+  display: block;
+  font-weight: 600;
+  color: #f4f4f4;
 }
 
 .modal-description {
@@ -125,7 +144,8 @@
 
 .modal-footer {
   display: flex;
-  justify-content: space-between;
+  gap: 8px;
+  justify-content: flex-start;
   align-items: center;
   margin-top: auto;
 }
@@ -136,12 +156,13 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 16px;
+  padding: 12px 24px;
   font-size: 14px;
   font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: 30px;
   cursor: pointer;
+  min-height: 48px;
 }
 
 .modal-favorite {
@@ -155,8 +176,9 @@
 }
 
 .modal-rating-button {
-  background-color: white;
-  color: #1c1c1c;
+  background-color: transparent;
+  color: white;
+  border: 1px solid rgba(244, 244, 244, 1);
 }
 
 .modal-favorite:hover {
@@ -166,8 +188,23 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .modal {
+    max-width: 335px;
+    height: auto;
+  }
+
   .modal-inner {
     flex-direction: column;
+    gap: 20px;
+  }
+
+  .modal-footer {
+    margin-top: 40px;
+  }
+
+  .modal-image {
+    width: 295px;
+    height: 258px;
   }
 
   .modal-image,
