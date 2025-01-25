@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const starIcon = document.querySelector('.sun-icon');
+  const starIcon = document.querySelector('.start-button');
   const modal = document.querySelector('.modal-backdrop');
   const modalCloseButton = document.querySelector('.modal-close');
 
