@@ -261,6 +261,7 @@ body:has(.modal-backdrop.is-open) {
     padding: 32px;
     height: auto;
     overflow: hidden;
+    width: 100%;
   }
 
   .modal-inner {
