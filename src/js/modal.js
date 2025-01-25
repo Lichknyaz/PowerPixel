@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const starIcon = document.querySelector('.start-button');
   const modal = document.querySelector('.modal-backdrop');
   const modalCloseButton = document.querySelector('.modal-close');
 
-  if (starIcon && modal && modalCloseButton) {
+  if (modal && modalCloseButton) {
     function openModal() {
       modal.classList.add('is-open');
       modalCloseButton.style.display = 'block';
@@ -32,7 +31,12 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    starIcon.addEventListener('click', openModal);
+    document.body.addEventListener('click', event => {
+      const target = event.target.closest('.start-button');
+      if (target) {
+        openModal();
+      }
+    });
 
     modalCloseButton.addEventListener('click', closeModal);
   }
