@@ -1,6 +1,8 @@
 import { fetchCategories, fetchExercises } from './api.js';
 import { hideSearch, showSearch } from './search.js';
 
+// ----------------------- CATEGORIES
+
 const filterMuscleBtn = document.querySelector('button[data-name="Muscles"]');
 const filterBodyPartsBtn = document.querySelector(
   'button[data-name="Body parts"]'
@@ -15,6 +17,62 @@ export const exercisesList = document.querySelector(
 let page = 1;
 let categoriesExcercises;
 
+let totalPages = 1;
+let currentFilter = '';
+
+// ----------------------- PAGINATION
+
+const paginationContainer = document.querySelector('.pagination-container');
+const toPreviousBtn = document.querySelector('[data-element="to-previous"]');
+const toNextBtn = document.querySelector('[data-element="to-next"]');
+const toBeginBtn = document.querySelector('[data-element="to-begin"]');
+const toEndBtn = document.querySelector('[data-element="to-end"]');
+const pagesList = document.querySelector('[data-element="pages-list"]');
+
+function updatePagination() {
+  toPreviousBtn.disabled = page === 1;
+  toBeginBtn.disabled = page === 1;
+  toNextBtn.disabled = page === totalPages;
+  toEndBtn.disabled = page === totalPages;
+
+  pagesList.innerHTML = '';
+
+  for (let i = 1; i <= totalPages; i++) {
+    const pageButton = document.createElement('li');
+    pageButton.classList.add('pagination-page');
+    pageButton.innerHTML = `<button type="button" data-page="${i}" class="page-btn ${
+      i === page ? 'active' : ''
+    }">${i}</button>`;
+    pagesList.appendChild(pageButton);
+
+    if (i === page) {
+      pageButton.classList.add('active');
+    }
+  }
+}
+
+toPreviousBtn.addEventListener('click', () => changePage(page - 1));
+toNextBtn.addEventListener('click', () => changePage(page + 1));
+toBeginBtn.addEventListener('click', () => changePage(1));
+toEndBtn.addEventListener('click', () => changePage(totalPages));
+pagesList.addEventListener('click', e => {
+  if (e.target.tagName === 'BUTTON') {
+    const newPage = Number(e.target.dataset.page);
+    console.log(page);
+    changePage(newPage);
+  }
+});
+
+function changePage(newPage) {
+  if (newPage < 1 || newPage > totalPages || newPage === page) return;
+  page = newPage;
+
+  creatGalleryMarkup(currentFilter, page);
+  updatePagination(page);
+}
+
+// ----------------------- FILTERS
+
 filterMuscleBtn.addEventListener('click', async event => {
   filterMuscleBtn.classList.add('active');
   filterEquipmentBtn.classList.remove('active');
@@ -24,6 +82,7 @@ filterMuscleBtn.addEventListener('click', async event => {
   filteredExerciseListContainer.classList.add('hidden');
 
   hideSearch();
+  page = 1;
   creatGalleryMarkup('Muscles');
 });
 
@@ -36,6 +95,7 @@ filterBodyPartsBtn.addEventListener('click', async event => {
   filteredExerciseListContainer.classList.add('hidden');
 
   hideSearch();
+  page = 1;
   creatGalleryMarkup('Body parts');
 });
 
@@ -48,18 +108,25 @@ filterEquipmentBtn.addEventListener('click', async event => {
   filteredExerciseListContainer.classList.add('hidden');
 
   hideSearch();
+  page = 1;
   creatGalleryMarkup('Equipment');
 });
 
+// ----------------------- RENDER
+
 async function creatGalleryMarkup(filter) {
   try {
+    currentFilter = filter;
     categoriesExcercises = await fetchCategories(filter, page);
+    totalPages = categoriesExcercises.totalPages;
 
     exercisesList.innerHTML = '';
     exercisesList.insertAdjacentHTML(
       'beforeend',
       createGalleryCards(categoriesExcercises.results)
     );
+
+    updatePagination();
   } catch (error) {
     console.log('Error fetching categories:', error);
   }
