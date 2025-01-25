@@ -150,20 +150,29 @@ const drawFilteredExercises = items => {
     .map(item => {
       return `<li>
                 <div class="filtered-exercises-categories-list-item">
+                <p class="workout"> Workout
+                  </p>
+                <div class="filtered-exercises-categories-raiting">
+                ${item.rating}
+                <svg class="star-icon" aria-hidden="true" width="24" height="24">
+                      <use href="./img/sprite.svg#stars"></use>
+                    </svg></div>
+                <button class="start-button">Start
+                <svg class="icon" aria-hidden="true" width="24" height="24">
+                    <use href="./img/sprite.svg#icon-arrow-single-right"></use>
+                  </svg>
+                  </button>
+                  <div class="filtered-categories-content">
+                  <div class="filtered-categories-content-title">
                   <svg class="icon" aria-hidden="true" width="24" height="24">
                     <use href="./img/sprite.svg#men"></use>
                   </svg>
                   <h3>${item.name}</h3>
-                  <p><strong>Calories:</strong> ${item.burnedCalories} / 3 min</p>
-                  <p><strong>Body Part:</strong> ${item.bodyPart}</p>
-                  <p><strong>Target:</strong> ${item.target}</p>
-                  <p><strong>Rating:</strong>
-                    <svg class="star-icon" aria-hidden="true" width="24" height="24">
-                      <use href="./img/sprite.svg#stars"></use>
-                    </svg>
-                    ${item.rating}
-                  </p>
-                    <button class="start-button">Start</button>
+                  </div>
+                  <div class="filtered-categories-content-info">
+                  <p><span>Calories:</span> ${item.burnedCalories} / 3 min</p>
+                  <p><span>Body Part:</span> ${item.bodyPart}</p>
+                  <p><span>Target:</span>${item.target}</p></div></div>
                 </div>
               </li>`;
     })
