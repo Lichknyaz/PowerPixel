@@ -247,3 +247,7 @@
     gap: 32px;
   }
 }
+
+.exercises-list-container {
+  flex-grow: 3;
+}
