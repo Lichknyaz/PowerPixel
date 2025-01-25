@@ -11,6 +11,11 @@
   column-gap: 16px;
 }
 
+@media only screen and (min-width: 1440px) {
+  .filtered-exercises-list-container {
+    flex-grow: 1;
+  }
+}
 .filtered-exercises-categories-raiting {
   display: flex;
   justify-content: center;
