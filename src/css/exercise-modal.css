@@ -31,7 +31,7 @@ body:has(.modal-backdrop.is-open) {
   position: fixed;
   width: 90vw;
   max-width: 335px;
-  height: 90vh;
+  max-height: 90vh;
   background-color: var(--color-black-100);
   border-radius: 20px;
   padding: 40px 20px 40px 20px;
@@ -41,6 +41,7 @@ body:has(.modal-backdrop.is-open) {
   flex-direction: column;
   transform: translateX(100%);
   transition: transform 0.5s ease-in;
+  overflow: hidden;
 }
 
 .modal.is-open {
@@ -49,8 +50,8 @@ body:has(.modal-backdrop.is-open) {
 
 .modal-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 14px;
+  right: 12px;
   width: 32px;
   height: 32px;
   padding: 0;
@@ -72,7 +73,8 @@ body:has(.modal-backdrop.is-open) {
 .modal-inner {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  overflow-y: auto;
+  max-height: 100%;
   gap: 32px;
 }
 
@@ -93,7 +95,8 @@ body:has(.modal-backdrop.is-open) {
 }
 
 .modal-content {
-  flex: 1 1 60%;
+  flex: 1 1 auto;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }
@@ -103,7 +106,7 @@ body:has(.modal-backdrop.is-open) {
   flex-direction: column;
   gap: 10px;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 0;
   margin-bottom: 20px;
 }
 
@@ -183,6 +186,8 @@ body:has(.modal-backdrop.is-open) {
   justify-content: flex-start;
   align-items: center;
   margin-top: auto;
+  flex-shrink: 0;
+  margin-top: auto;
 }
 
 .modal-favorite,
@@ -208,6 +213,8 @@ body:has(.modal-backdrop.is-open) {
 }
 
 .modal-favorite .heart-icon {
+  width: 16px;
+  height: 16px;
   fill: var(--color-background);
   stroke: var(--color-black-100);
 }
@@ -245,10 +252,15 @@ body:has(.modal-backdrop.is-open) {
 }
 
 @media only screen and (min-width: 768px) {
+  .modal-backdrop {
+    overflow-x: hidden;
+  }
+
   .modal {
-    max-width: 708px;
+    max-width: 704px;
     padding: 32px;
     height: auto;
+    overflow: hidden;
   }
 
   .modal-inner {
@@ -297,13 +309,20 @@ body:has(.modal-backdrop.is-open) {
     font-weight: 400;
     white-space: nowrap;
     line-height: 24px;
+    flex: 1 1 auto;
+    max-width: 194px;
+    box-sizing: border-box;
+    min-height: 48px;
+    width: 100%;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .modal {
-    width: 90vw;
+    width: 60vw;
+    max-width: 708px;
     height: auto;
+    margin: 0 auto;
   }
 
   .modal-inner {
