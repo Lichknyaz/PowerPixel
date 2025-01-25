@@ -1,5 +1,6 @@
 import { fetchCategories, fetchExercises } from './api.js';
 import { hideSearch, showSearch } from './search.js';
+import { getExercises, setExercises, setPagination } from './storage.js';
 
 const filterMuscleBtn = document.querySelector('button[data-name="Muscles"]');
 const filterBodyPartsBtn = document.querySelector(
@@ -134,45 +135,56 @@ exercisesList.addEventListener('click', async event => {
   //Log parameters
   console.log(fetchParams);
   const filteredExercises = await fetchExercises({ ...fetchParams });
+  const {
+    results: items,
+    page,
+    perPage: limit,
+    totalPages: pagesCount,
+  } = filteredExercises;
 
   // Log results
-  console.log(filteredExercises.results);
+  console.log('Fetched Exercises', filteredExercises);
 
-  showSearch();
+  showSearch(items);
 
-  filteredExerciseList.innerHTML = drawFilteredExercises(
-    filteredExercises.results
-  );
+  setExercises(items);
+  setPagination({
+    page,
+    limit,
+    pagesCount,
+  });
+
+  filteredExerciseList.innerHTML = drawFilteredExercises();
 });
 
-const drawFilteredExercises = items => {
-  return items
-    .map(item => {
+const drawFilteredExercises = () => {
+  return getExercises()
+    .map(({ rating, name, burnedCalories, bodyPart, target }, id) => {
       return `<li>
                 <div class="filtered-exercises-categories-list-item">
                 <p class="workout"> Workout
                   </p>
                 <div class="filtered-exercises-categories-raiting">
-                ${item.rating}
+                ${rating}
                 <svg class="star-icon" aria-hidden="true" width="24" height="24">
                       <use href="./img/sprite.svg#stars"></use>
                     </svg></div>
-                <button class="start-button">Start
-                <svg class="icon" aria-hidden="true" width="24" height="24">
+                <button class="start-button" data-id="${id}">Start
+                  <svg class="icon" aria-hidden="true" width="24" height="24">
                     <use href="./img/sprite.svg#icon-arrow-single-right"></use>
                   </svg>
-                  </button>
-                  <div class="filtered-categories-content">
+                </button>
+                <div class="filtered-categories-content">
                   <div class="filtered-categories-content-title">
                   <svg class="icon" aria-hidden="true" width="24" height="24">
                     <use href="./img/sprite.svg#men"></use>
                   </svg>
-                  <h3>${item.name}</h3>
+                  <h3>${name}</h3>
                   </div>
                   <div class="filtered-categories-content-info">
-                  <p><span>Calories:</span> ${item.burnedCalories} / 3 min</p>
-                  <p><span>Body Part:</span> ${item.bodyPart}</p>
-                  <p><span>Target:</span>${item.target}</p></div></div>
+                  <p><span>Calories:</span> ${burnedCalories} / 3 min</p>
+                  <p><span>Body Part:</span> ${bodyPart}</p>
+                  <p><span>Target:</span>${target}</p></div></div>
                 </div>
               </li>`;
     })
