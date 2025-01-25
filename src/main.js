@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   homePageCategoriesLayout();
 });
 
+localStorage.setItem('favorites', JSON.stringify([]))
+
 import './js/storage.js';
 import './js/mobilemenu.js';
 import './js/header-toggle.js';

@@ -1,5 +1,5 @@
 const store = {
-  exercises: [],
+  items: [],
   pagination: {
     page: 1,
     limit: 10,
@@ -7,16 +7,19 @@ const store = {
   },
 };
 
-export function setExercises(arrExercises) {
-  store.exercises = arrExercises;
+export function setItems(arrItems) {
+  store.items = arrItems.map(({ _id: id, ...other }) => ({
+    id,
+    ...other,
+  }));
 }
 
-export function getExercises() {
-  return store.exercises;
+export function getItems() {
+  return store.items;
 }
 
-export function getExerciseById(id) {
-  return store.exercises[id];
+export function getItemById(payloadId) {
+  return store.items.find(({ id }) => payloadId === id);
 }
 
 export function setPagination({ page, limit, pagesCount }) {
@@ -25,4 +28,17 @@ export function setPagination({ page, limit, pagesCount }) {
     limit,
     pagesCount,
   };
+}
+
+export function addToFavorites(id) {
+  const currentFav = JSON.parse(localStorage.getItem('favorites'));
+  const item = getItemById(id);
+  const newFav = [...currentFav, item];
+  localStorage.setItem('favorites', JSON.stringify(newFav));
+}
+
+export function removeFavorite(payloadId) {
+  const currentFav = JSON.parse(localStorage.getItem('favorites'));
+  const newFav = currentFav.filter(({ id }) => payloadId !== id);
+  localStorage.setItem('favorites', JSON.stringify(newFav));
 }
