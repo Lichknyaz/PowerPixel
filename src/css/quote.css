@@ -20,7 +20,7 @@
 }
 
 .sidebar-quote-wrapper,
-.sidebar-suggestion-wrapper{
+.sidebar-suggestion-wrapper {
   background-color: var(--color-black-100);
   padding: 20px;
   display: flex;
@@ -41,7 +41,7 @@
 
 @media only screen and (min-width: 768px) {
   .sidebar-quote-wrapper,
-  .sidebar-suggestion-wrapper{
+  .sidebar-suggestion-wrapper {
     width: 400px;
     padding: 40px;
   }
@@ -78,24 +78,24 @@
 
 @media only screen and (min-width: 768px) {
   .sidebar-quote-title,
-  .sidebar-suggestion-title{
+  .sidebar-suggestion-title {
     font-size: 24px;
     line-height: 32px; /* 133.333% */
     margin-bottom: 6px;
   }
-  .sidebar-suggestion-title{
+  .sidebar-suggestion-title {
     margin-bottom: 2px;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .sidebar-quote-title,
-  .sidebar-suggestion-title{
+  .sidebar-suggestion-title {
     font-size: 24px;
     line-height: 32px; /* 133.333% */
     margin-bottom: 6px;
   }
-  .sidebar-suggestion-title{
+  .sidebar-suggestion-title {
     margin-bottom: 2px;
   }
 }
@@ -104,7 +104,6 @@
 .sidebar-suggestion {
   margin-bottom: 16px;
 }
-
 
 .sidebar-quote,
 .sidebar-quote-author,
@@ -118,8 +117,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .sidebar-quote
- {
+  .sidebar-quote {
     margin-bottom: 18px;
   }
   .sidebar-suggestion {
@@ -128,14 +126,12 @@
 }
 
 @media only screen and (min-width: 1440px) {
-  .sidebar-quote
-  {
+  .sidebar-quote {
     margin-bottom: 8px;
   }
 }
 
-.sidebar-quote-author
- {
+.sidebar-quote-author {
   color: var(--color-background);
 }
 
@@ -154,17 +150,17 @@
   right: 20px;
 }
 
-@media only screen and (min-width: 768px){
-.inverted-commas{
-  top: 40px;
-  right: 40px;
-  height: 24px;
-  width: 24px;
-}
+@media only screen and (min-width: 768px) {
+  .inverted-commas {
+    top: 40px;
+    right: 40px;
+    height: 24px;
+    width: 24px;
+  }
 }
 
 .quote-men,
-.suggestion-dumbbell{
+.suggestion-dumbbell {
   fill: var(--color-background);
 }
 
@@ -173,7 +169,7 @@
 }
 
 .icon-wrapper,
-.icon-wrapper-dumbbell{
+.icon-wrapper-dumbbell {
   display: flex;
   flex-shrink: 0;
   width: 34px;

@@ -85,11 +85,15 @@ export const fetchExerciseById = async id => {
 };
 
 export const rateExercise = async ({ id, rate, email, review }) => {
-  const response = await api.patch(`/exercises/${id}/rating`, { rate, email, review });
+  const response = await api.patch(`/exercises/${id}/rating`, {
+    rate,
+    email,
+    review,
+  });
 
   if (response.data?.error) {
     throw new Error(response.data?.error || 'Rating update failed');
   }
-  
+
   return response.data;
 };
