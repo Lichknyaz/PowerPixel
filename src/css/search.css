@@ -5,6 +5,7 @@
 
 .hidden-search {
   visibility: hidden;
+  display: none;
 }
 
 .search-input {
