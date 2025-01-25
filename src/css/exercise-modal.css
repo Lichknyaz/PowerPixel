@@ -309,13 +309,4 @@ body:has(.modal-backdrop.is-open) {
   .modal-inner {
     margin: 0 auto;
   }
-
-  .modal-image {
-  }
-
-  .modal-content {
-  }
-
-  .modal-header {
-  }
 }
