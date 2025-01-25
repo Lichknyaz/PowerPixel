@@ -75,7 +75,7 @@ function changePage(newPage) {
 // ----------------------- FILTERS
 
 filterMuscleBtn.addEventListener('click', async event => {
-  
+
   filterMuscleBtn.classList.add('active');
   filterEquipmentBtn.classList.remove('active');
   filterBodyPartsBtn.classList.remove('active');
@@ -217,7 +217,6 @@ export async function handleCategories() {
   console.log('Fetched Exercises', filteredExercises);
 
   showSearch(items);
-
   setItems(items);
   setPagination({
     page,
@@ -225,7 +224,12 @@ export async function handleCategories() {
     pagesCount,
   });
 
-  filteredExerciseList.innerHTML = drawFilteredExercises();
+  if (items.length > 0 ) {
+    filteredExerciseList.innerHTML = drawFilteredExercises();
+  } else {
+    filteredExerciseList.innerHTML = '<strong style="font: inherit; font-size: 24px ">Sorry, No items found</strong>';
+  }
+
 }
 
 const drawFilteredExercises = () => {

@@ -4,11 +4,13 @@ import { setSearch } from './storage';
 const searchForm = document.querySelector('.js-search-form');
 const searchInput = document.querySelector('.js-search-input');
 
-searchInput.addEventListener('input', function (event) {
+searchForm.addEventListener('submit', function (event) {
   event.preventDefault();
-  const value = event.target.value;
+  const value = event.target.firstElementChild.value;
   setSearch(value);
   handleCategories();
+  setSearch('');
+  searchForm.reset();
 });
 
 export function hideSearch() {
