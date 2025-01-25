@@ -1,5 +1,7 @@
 // favorites.js
 
+import { removeFavorite } from './storage';
+
 // Завантаження обраних вправ
 function loadFavorites() {
   const favoritesList = document.querySelector('.favorites-list');
@@ -35,28 +37,22 @@ function createFavoriteCard(exercise, index) {
   card.innerHTML = `
     <div class="exercise-info">
       <h3>${exercise.name}</h3>
-      <p><strong>Calories:</strong> ${exercise.calories} / 3 min</p>
+      <p><strong>Calories:</strong> ${exercise.burnedCalories} / 3 min</p>
       <p><strong>Body Part:</strong> ${exercise.bodyPart}</p>
       <p><strong>Target:</strong> ${exercise.target}</p>
     </div>
-    <button class="remove-button">Remove</button>
+    <button class="remove-button" data-id="${exercise.id}">Remove</button>
   `;
 
   // Обробник подій для кнопки "Remove"
   const removeButton = card.querySelector('.remove-button');
-  removeButton.addEventListener('click', () => {
-    removeFavorite(index);
+  removeButton.addEventListener('click', event => {
+    const id = event.target.attributes['data-id'].value;
+    removeFavorite(id);
+    loadFavorites();
   });
 
   return card;
-}
-
-// Видалення вправи зі списку обраного
-function removeFavorite(index) {
-  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-  favorites.splice(index, 1);
-  localStorage.setItem('favorites', JSON.stringify(favorites));
-  loadFavorites();
 }
 
 // Ініціалізація сторінки обраного

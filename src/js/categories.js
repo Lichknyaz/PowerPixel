@@ -1,6 +1,6 @@
 import { fetchCategories, fetchExercises } from './api.js';
 import { hideSearch, showSearch } from './search.js';
-import { getExercises, setExercises, setPagination } from './storage.js';
+import { getItems, setItems, setPagination } from './storage.js';
 
 const filterMuscleBtn = document.querySelector('button[data-name="Muscles"]');
 const filterBodyPartsBtn = document.querySelector(
@@ -147,7 +147,7 @@ exercisesList.addEventListener('click', async event => {
 
   showSearch(items);
 
-  setExercises(items);
+  setItems(items);
   setPagination({
     page,
     limit,
@@ -158,8 +158,8 @@ exercisesList.addEventListener('click', async event => {
 });
 
 const drawFilteredExercises = () => {
-  return getExercises()
-    .map(({ rating, name, burnedCalories, bodyPart, target }, id) => {
+  return getItems()
+    .map(({ id, rating, name, burnedCalories, bodyPart, target }) => {
       return `<li>
                 <div class="filtered-exercises-categories-list-item">
                 <p class="workout"> Workout

@@ -1,4 +1,4 @@
-import { getExerciseById } from './storage';
+import { addToFavorites, getItemById } from './storage';
 
 const modalContainer = document.querySelector('.modal-container');
 
@@ -13,20 +13,24 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function drawModal(id) {
-  const item = getExerciseById(id);
+  const item = getItemById(id);
   modalContainer.innerHTML = getModalHTML(item);
 
   const modal = document.querySelector('.modal-backdrop');
   const modalCloseButton = document.querySelector('.modal-close');
+  const modalFavorite = document.querySelector('.modal-favorite');
   const closeFn = closeModal({ modal, modalCloseButton });
 
   modalCloseButton.addEventListener('click', closeFn); //
+  modalFavorite.addEventListener('click', () => {
+    addToFavorites(id);
+  });
 
   modal.classList.add('is-open');
   modalCloseButton.style.display = 'block';
 
   document.addEventListener('keydown', handleEscapeKey({ closeFn }));
-  modal.addEventListener('click', handleBackdropClick({ closeFn }));
+  modal.addEventListener('click', handleBackdropClick({ modal, closeFn }));
 }
 
 function handleEscapeKey({ closeFn }) {
@@ -37,7 +41,7 @@ function handleEscapeKey({ closeFn }) {
   };
 }
 
-function handleBackdropClick({ closeFn }) {
+function handleBackdropClick({ modal, closeFn }) {
   return function (event) {
     if (event.target === modal) {
       closeFn();
@@ -58,6 +62,7 @@ function closeModal({ modal, modalCloseButton }) {
 }
 
 function getModalHTML({
+  id,
   gifUrl,
   name,
   rating,
@@ -124,7 +129,7 @@ function getModalHTML({
 
             <!-- Footer -->
             <div class="modal-footer">
-              <button class="modal-favorite" data-favorite="false">
+              <button class="modal-favorite" data-favorite="false" data-id="${id}">
                 Add to favorites
                 <svg class="heart-icon" width="20" height="20">
                   <use href="./img/sprite.svg#heart"></use>
