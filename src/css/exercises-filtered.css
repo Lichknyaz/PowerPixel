@@ -1,8 +1,9 @@
-.filtered-exercises-list-container {
-  background-color: red;
-
+.workout {
+  text-transform: uppercase;
+  border: 1px solid #242424;
+  border-radius: 20px;
+  padding: 5px 8px;
 }
-
 .filtered-exercises-categories-list {
   display: flex;
   flex-wrap: wrap;
@@ -10,14 +11,63 @@
   column-gap: 16px;
 }
 
+.filtered-exercises-categories-raiting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+
 .filtered-exercises-categories-list-item {
   display: flex;
   flex-wrap: wrap;
-  font: inherit;
-  width: 442px;
-  height: 141px;
-  background-color: green;
+  width: 335px;
+  height: 210px;
+  background-color: white;
+  border-radius: 15px;
   gap: 10px;
+  padding: 0 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filtered-categories-content-title {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.filtered-categories-content-title h3 {
+  font-size: 20px;
+  line-height: 100%;
+  text-transform: capitalize;
+}
+
+.filtered-categories-content-info {
+  display: flex;
+  gap: 10px;
+}
+
+.filtered-categories-content-info span {
+  color: rgb(36, 36, 36, 40%);
+  margin-right: 4px;
+}
+
+.filtered-categories-content-info p {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+
+.filtered-categories-content-title .icon {
+  width: 24px;
+  height: 24px;
+  background-color: #242424;
+  fill: #f4f4f4;
+  border-radius: 50%;
+  padding: 4px;
 }
 
 .hidden {
@@ -25,6 +75,36 @@
 }
 
 .start-button {
-  width: 100px;
-  height: 20px;
+  display: flex;
+  gap: 9px;
+}
+
+/* -----------------exercises cards ------------*/
+
+@media only screen and (min-width: 768px) {
+  .filtered-exercises-categories-list {
+    justify-content: center;
+  }
+
+  .filtered-categories-content-title h3 {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .filtered-exercises-categories-list-item {
+    width: 442px;
+  }
+
+  .filtered-categories-content-title h3 {
+    font-size: 24px;
+  }
+
+  .filtered-categories-content-info {
+    gap: 16px;
+  }
+
+  .filtered-categories-content-info p {
+    max-width: 120px;
+  }
 }
