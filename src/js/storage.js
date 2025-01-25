@@ -5,6 +5,7 @@ const store = {
     limit: 10,
     pagesCount: 1,
   },
+  search: '',
 };
 
 export function setItems(arrItems) {
@@ -41,4 +42,12 @@ export function removeFavorite(payloadId) {
   const currentFav = JSON.parse(localStorage.getItem('favorites'));
   const newFav = currentFav.filter(({ id }) => payloadId !== id);
   localStorage.setItem('favorites', JSON.stringify(newFav));
+}
+
+export function setSearch(value) {
+  store.search = value;
+}
+
+export function getSearchValue() {
+  return store.search;
 }
