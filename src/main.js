@@ -6,7 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
   homePageCategoriesLayout();
 });
 
-import './js/mobilemenu';
+localStorage.setItem('favorites', JSON.stringify([]))
+
+import './js/storage.js';
+import './js/mobilemenu.js';
 import './js/header-toggle.js';
 import './js/categories.js';
 import './js/quote.js';

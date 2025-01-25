@@ -1,5 +1,6 @@
 import { fetchCategories, fetchExercises } from './api.js';
 import { hideSearch, showSearch } from './search.js';
+import { getItems, getSearchValue, setItems, setPagination } from './storage.js';
 
 // ----------------------- CATEGORIES
 
@@ -74,6 +75,7 @@ function changePage(newPage) {
 // ----------------------- FILTERS
 
 filterMuscleBtn.addEventListener('click', async event => {
+  
   filterMuscleBtn.classList.add('active');
   filterEquipmentBtn.classList.remove('active');
   filterBodyPartsBtn.classList.remove('active');
@@ -86,7 +88,7 @@ filterMuscleBtn.addEventListener('click', async event => {
   creatGalleryMarkup('Muscles');
 });
 
-filterBodyPartsBtn.addEventListener('click', async event => {
+filterBodyPartsBtn.addEventListener('click', async () => {
   filterMuscleBtn.classList.remove('active');
   filterEquipmentBtn.classList.remove('active');
   filterBodyPartsBtn.classList.add('active');
@@ -99,7 +101,7 @@ filterBodyPartsBtn.addEventListener('click', async event => {
   creatGalleryMarkup('Body parts');
 });
 
-filterEquipmentBtn.addEventListener('click', async event => {
+filterEquipmentBtn.addEventListener('click', async () => {
   filterMuscleBtn.classList.remove('active');
   filterEquipmentBtn.classList.add('active');
   filterBodyPartsBtn.classList.remove('active');
@@ -169,8 +171,10 @@ const filteredExerciseListContainer = document.querySelector(
 );
 let fetchParams = {};
 
-exercisesList.addEventListener('click', async event => {
-  const listItem = event.target.closest('.exercises-categories-item');
+exercisesList.addEventListener('click', handleCategories);
+
+export async function handleCategories() {
+  const listItem = document.querySelector('.exercises-categories-item');
   filteredExerciseListContainer.classList.remove('hidden');
 
   // Fetch parameters for exercises
@@ -189,11 +193,12 @@ exercisesList.addEventListener('click', async event => {
     }
     // Add pagination
     const target = listItem.getAttribute('data-body-part');
+    const keyword = getSearchValue();
     fetchParams = {
       [category]: target,
-      keyword: '',
       page: 1,
       limit: 10,
+      keyword,
     };
     exercisesListContainer.classList.add('hidden');
   }
@@ -201,45 +206,56 @@ exercisesList.addEventListener('click', async event => {
   //Log parameters
   console.log(fetchParams);
   const filteredExercises = await fetchExercises({ ...fetchParams });
+  const {
+    results: items,
+    page,
+    perPage: limit,
+    totalPages: pagesCount,
+  } = filteredExercises;
 
   // Log results
-  console.log(filteredExercises.results);
+  console.log('Fetched Exercises', filteredExercises);
 
-  showSearch();
+  showSearch(items);
 
-  filteredExerciseList.innerHTML = drawFilteredExercises(
-    filteredExercises.results
-  );
-});
+  setItems(items);
+  setPagination({
+    page,
+    limit,
+    pagesCount,
+  });
 
-const drawFilteredExercises = items => {
-  return items
-    .map(item => {
+  filteredExerciseList.innerHTML = drawFilteredExercises();
+}
+
+const drawFilteredExercises = () => {
+  return getItems()
+    .map(({ id, rating, name, burnedCalories, bodyPart, target }) => {
       return `<li>
                 <div class="filtered-exercises-categories-list-item">
                 <p class="workout"> Workout
                   </p>
                 <div class="filtered-exercises-categories-raiting">
-                ${item.rating}
+                ${rating}
                 <svg class="star-icon" aria-hidden="true" width="24" height="24">
                       <use href="./img/sprite.svg#stars"></use>
                     </svg></div>
-                <button class="start-button">Start
-                <svg class="icon" aria-hidden="true" width="24" height="24">
+                <button class="start-button" data-id="${id}">Start
+                  <svg class="icon" aria-hidden="true" width="24" height="24">
                     <use href="./img/sprite.svg#icon-arrow-single-right"></use>
                   </svg>
-                  </button>
-                  <div class="filtered-categories-content">
+                </button>
+                <div class="filtered-categories-content">
                   <div class="filtered-categories-content-title">
                   <svg class="icon" aria-hidden="true" width="24" height="24">
                     <use href="./img/sprite.svg#men"></use>
                   </svg>
-                  <h3>${item.name}</h3>
+                  <h3>${name}</h3>
                   </div>
                   <div class="filtered-categories-content-info">
-                  <p><span>Calories:</span> ${item.burnedCalories} / 3 min</p>
-                  <p><span>Body Part:</span> ${item.bodyPart}</p>
-                  <p><span>Target:</span>${item.target}</p></div></div>
+                  <p><span>Calories:</span> ${burnedCalories} / 3 min</p>
+                  <p><span>Body Part:</span> ${bodyPart}</p>
+                  <p><span>Target:</span>${target}</p></div></div>
                 </div>
               </li>`;
     })

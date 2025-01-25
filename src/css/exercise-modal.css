@@ -140,13 +140,9 @@ body:has(.modal-backdrop.is-open) {
   gap: 4px;
 }
 
-.stars svg {
-  stroke: var(--color-white-60);
-  fill: var(--color-yellow);
-}
-
 .rate-icon {
   display: block;
+  stroke: grey;
 }
 
 .modal-details {
@@ -283,10 +279,16 @@ body:has(.modal-backdrop.is-open) {
     margin: 0;
     text-align: left;
     white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .modal-description {
+    margin-bottom: 0;
   }
 
   .modal-footer {
     flex-direction: row;
+    margin-top: 64px;
   }
 
   .modal-favorite,
@@ -294,6 +296,7 @@ body:has(.modal-backdrop.is-open) {
     font-size: 16px;
     font-weight: 400;
     white-space: nowrap;
+    line-height: 24px;
   }
 }
 
@@ -305,14 +308,5 @@ body:has(.modal-backdrop.is-open) {
 
   .modal-inner {
     margin: 0 auto;
-  }
-
-  .modal-image {
-  }
-
-  .modal-content {
-  }
-
-  .modal-header {
   }
 }

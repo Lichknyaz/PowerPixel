@@ -14,14 +14,17 @@ export const initializeSubscribeEmail = () => {
     try {
       const response = await subscribeEmail(email);
       if (response) {
-        const message = response.data?.message || response.message || 'Subscription successful!'
+        const message =
+          response.data?.message ||
+          response.message ||
+          'Subscription successful!';
 
         Toastify({
           text: message,
           duration: 3000,
           style: {
-            background: '#4CAF50'
-        },
+            background: '#4CAF50',
+          },
           close: true,
         }).showToast();
         emailInput.value = '';
@@ -31,13 +34,13 @@ export const initializeSubscribeEmail = () => {
         error.response?.data?.message ||
         error.message ||
         'An error occurred. Please try again later.';
-        
+
       Toastify({
         text: errorMessage,
         duration: 3000,
         style: {
-          background: '#FF5F6D'
-      },
+          background: '#FF5F6D',
+        },
         close: true,
       }).showToast();
     }
