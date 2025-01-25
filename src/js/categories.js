@@ -1,6 +1,6 @@
 import { fetchCategories, fetchExercises } from './api.js';
 import { hideSearch, showSearch } from './search.js';
-import { getItems, setItems, setPagination } from './storage.js';
+import { getItems, getSearchValue, setItems, setPagination } from './storage.js';
 
 const filterMuscleBtn = document.querySelector('button[data-name="Muscles"]');
 const filterBodyPartsBtn = document.querySelector(
@@ -16,7 +16,7 @@ export const exercisesList = document.querySelector(
 let page = 1;
 let categoriesExcercises;
 
-filterMuscleBtn.addEventListener('click', async event => {
+filterMuscleBtn.addEventListener('click', async () => {
   filterMuscleBtn.classList.add('active');
   filterEquipmentBtn.classList.remove('active');
   filterBodyPartsBtn.classList.remove('active');
@@ -28,7 +28,7 @@ filterMuscleBtn.addEventListener('click', async event => {
   creatGalleryMarkup('Muscles');
 });
 
-filterBodyPartsBtn.addEventListener('click', async event => {
+filterBodyPartsBtn.addEventListener('click', async () => {
   filterMuscleBtn.classList.remove('active');
   filterEquipmentBtn.classList.remove('active');
   filterBodyPartsBtn.classList.add('active');
@@ -40,7 +40,7 @@ filterBodyPartsBtn.addEventListener('click', async event => {
   creatGalleryMarkup('Body parts');
 });
 
-filterEquipmentBtn.addEventListener('click', async event => {
+filterEquipmentBtn.addEventListener('click', async () => {
   filterMuscleBtn.classList.remove('active');
   filterEquipmentBtn.classList.add('active');
   filterBodyPartsBtn.classList.remove('active');
@@ -103,8 +103,10 @@ const filteredExerciseListContainer = document.querySelector(
 );
 let fetchParams = {};
 
-exercisesList.addEventListener('click', async event => {
-  const listItem = event.target.closest('.exercises-categories-item');
+exercisesList.addEventListener('click', handleCategories);
+
+export async function handleCategories() {
+  const listItem = document.querySelector('.exercises-categories-item');
   filteredExerciseListContainer.classList.remove('hidden');
 
   // Fetch parameters for exercises
@@ -123,11 +125,12 @@ exercisesList.addEventListener('click', async event => {
     }
     // Add pagination
     const target = listItem.getAttribute('data-body-part');
+    const keyword = getSearchValue();
     fetchParams = {
       [category]: target,
-      keyword: '',
       page: 1,
       limit: 10,
+      keyword,
     };
     exercisesListContainer.classList.add('hidden');
   }
@@ -155,7 +158,7 @@ exercisesList.addEventListener('click', async event => {
   });
 
   filteredExerciseList.innerHTML = drawFilteredExercises();
-});
+}
 
 const drawFilteredExercises = () => {
   return getItems()
