@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build --base=/PowerPixel/",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "copy-svg": "node fixes/copy.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
