@@ -36,12 +36,14 @@ function createFavoriteCard(exercise) {
   card.innerHTML = `<li>
   <div class="filtered-exercises-categories-list-item">
   <div class="favorites-item-header">
+  <div class="favorites-header-remove">
   <p class="workout"> Workout
     </p>
   <button class="remove-button" data-id="${exercise.id}">
   <svg class="remove-icon" aria-hidden="true" width="18" height="18">
   <use href="./img/sprite.svg#icon-trash"></use>
 </svg></button>
+</div>
   <button class="start-button" data-id="${exercise.id}">Start
     <svg class="icon-arrow" aria-hidden="true" width="18" height="18">
       <use href="./img/sprite.svg#icon-arrow-right"></use>

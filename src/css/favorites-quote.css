@@ -4,6 +4,9 @@ section.favorites {
 
 .favorites-title {
   margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 38px;
 }
 
 .favorites-content {
@@ -102,8 +105,6 @@ section.favorites {
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
-}
-.favorites-added-exercises {
   margin: auto;
 }
 
@@ -133,10 +134,6 @@ section.favorites {
   visibility: hidden;
 }
 
-.favorites.pagination-container {
-  padding-bottom: 80px;
-}
-
 .favorites-list {
   display: flex;
   flex-direction: column;
@@ -146,6 +143,10 @@ section.favorites {
 .favorites-item-header {
   display: flex;
   flex-direction: row;
+}
+
+.favorites-header-remove {
+  display: flex;
 }
 
 .remove-icon {
@@ -177,7 +178,7 @@ section.favorites {
   visibility: hidden;
 }
 
-.favorites.pagination-container {
+.favorites-pagination {
   padding-bottom: 80px;
 }
 
@@ -306,5 +307,9 @@ section.favorites {
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .favorites-pagination {
+    display: none;
   }
 }
