@@ -1,5 +1,5 @@
 .section.hero {
-  margin-top: 60px;
+  padding-top: 60px;
 }
 
 .hero-tags-desktop-wrapper {
@@ -28,13 +28,16 @@
   vertical-align: top;
 }
 
+.hero-content {
+  margin-bottom: 20px;
+}
+
 .section.hero p {
   font-family: 'DM Sans';
   font-size: 14px;
   line-height: 1.28;
   letter-spacing: -0.018em;
   margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 .hero-image img {
@@ -45,7 +48,7 @@
 
 .hero-tags {
   display: flex;
-  gap: 8px;
+  gap: 5px;
   list-style: none;
   margin: 15px 0 0;
   padding: 0;
@@ -76,10 +79,10 @@
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
   .section.hero {
-    margin-top: 80px;
+    padding-top: 80px;
   }
 
-  .section.hero p {
+  .hero-content {
     margin-bottom: 32px;
   }
 
@@ -108,6 +111,7 @@
   }
 
   .hero-tags {
+    gap: 8px;
     justify-content: flex-end;
   }
 
@@ -121,7 +125,7 @@
 /* Styles for Desktop devices */
 @media only screen and (min-width: 1440px) {
   .section.hero {
-    margin-top: 76px;
+    padding-top: 76px;
   }
 
   .hero-tags {
