@@ -25,10 +25,14 @@ export function getItemById(payloadId) {
 
 export function setPagination({ page, limit, pagesCount }) {
   store.pagination = {
-    page,
-    limit,
-    pagesCount,
+    page: parseInt(page),
+    limit: parseInt(limit),
+    pagesCount: parseInt(pagesCount),
   };
+}
+
+export function getPaginationData() {
+  return store.pagination;
 }
 
 export const TOGGLE_FAVORITES_RESULT_MAP = {

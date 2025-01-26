@@ -1,4 +1,5 @@
 import { fetchCategories, fetchExercises } from './api.js';
+import { initPagination } from './pagination.js';
 import { hideSearch, showSearch } from './search.js';
 import {
   getItems,
@@ -28,61 +29,7 @@ const filterEquipmentItem = document.querySelector(
   '[data-name="Equipment-item"]'
 );
 
-let page = 1;
 let categoriesExcercises;
-
-let totalPages = 1;
-let currentFilter = '';
-
-// ----------------------- PAGINATION
-
-const toPreviousBtn = document.querySelector('[data-element="to-previous"]');
-const toNextBtn = document.querySelector('[data-element="to-next"]');
-const toBeginBtn = document.querySelector('[data-element="to-begin"]');
-const toEndBtn = document.querySelector('[data-element="to-end"]');
-const pagesList = document.querySelector('[data-element="pages-list"]');
-
-function updatePagination() {
-  toPreviousBtn.disabled = page === 1;
-  toBeginBtn.disabled = page === 1;
-  toNextBtn.disabled = page === totalPages;
-  toEndBtn.disabled = page === totalPages;
-
-  pagesList.innerHTML = '';
-
-  for (let i = 1; i <= totalPages; i++) {
-    const pageButton = document.createElement('li');
-    pageButton.classList.add('pagination-page');
-    pageButton.innerHTML = `<button type="button" data-page="${i}" class="page-btn ${
-      i === page ? 'active' : ''
-    }">${i}</button>`;
-    pagesList.appendChild(pageButton);
-
-    if (i === page) {
-      pageButton.classList.add('active');
-    }
-  }
-}
-
-toPreviousBtn.addEventListener('click', () => changePage(page - 1));
-toNextBtn.addEventListener('click', () => changePage(page + 1));
-toBeginBtn.addEventListener('click', () => changePage(1));
-toEndBtn.addEventListener('click', () => changePage(totalPages));
-pagesList.addEventListener('click', e => {
-  if (e.target.tagName === 'BUTTON') {
-    const newPage = Number(e.target.dataset.page);
-
-    changePage(newPage);
-  }
-});
-
-function changePage(newPage) {
-  if (newPage < 1 || newPage > totalPages || newPage === page) return;
-  page = newPage;
-
-  creatGalleryMarkup(currentFilter, page);
-  updatePagination(page);
-}
 
 // ----------------------- FILTERS
 
@@ -95,8 +42,21 @@ filterMuscleBtn.addEventListener('click', async () => {
   filteredExerciseListContainer.classList.add('hidden');
 
   hideSearch();
-  page = 1;
-  creatGalleryMarkup('Muscles');
+
+  creatGalleryMarkup({
+    category: 'Muscles',
+    onMount: () => {
+      initPagination({
+        id: 'exercises',
+        onChange: ({ page }) => {
+          creatGalleryMarkup({
+            category: 'Muscles',
+            page,
+          });
+        },
+      });
+    },
+  });
 });
 
 filterBodyPartsBtn.addEventListener('click', async () => {
@@ -108,8 +68,21 @@ filterBodyPartsBtn.addEventListener('click', async () => {
   filteredExerciseListContainer.classList.add('hidden');
 
   hideSearch();
-  page = 1;
-  creatGalleryMarkup('Body parts');
+
+  creatGalleryMarkup({
+    category: 'Body parts',
+    onMount: () => {
+      initPagination({
+        id: 'exercises',
+        onChange: ({ page }) => {
+          creatGalleryMarkup({
+            category: 'Body parts',
+            page,
+          });
+        },
+      });
+    },
+  });
 });
 
 filterEquipmentBtn.addEventListener('click', async () => {
@@ -121,26 +94,53 @@ filterEquipmentBtn.addEventListener('click', async () => {
   filteredExerciseListContainer.classList.add('hidden');
 
   hideSearch();
-  page = 1;
-  creatGalleryMarkup('Equipment');
+
+  creatGalleryMarkup({
+    category: 'Equipment',
+    onMount: () => {
+      initPagination({
+        id: 'exercises',
+        onChange: ({ page }) => {
+          creatGalleryMarkup({
+            category: 'Equipment',
+            page,
+          });
+        },
+      });
+    },
+  });
 });
 
 // ----------------------- RENDER
 
-async function creatGalleryMarkup(filter) {
+async function creatGalleryMarkup({
+  category,
+  onMount,
+  page: payloadPage = 1,
+}) {
   try {
-    currentFilter = filter;
     document.querySelector('.loader').classList.toggle('is-active', true);
-    categoriesExcercises = await fetchCategories(filter, page);
-    totalPages = categoriesExcercises.totalPages;
+    const {
+      results: items,
+      page,
+      perPage: limit,
+      totalPages: pagesCount,
+    } = await fetchCategories(category, payloadPage);
+    categoriesExcercises = items;
+
+    setPagination({
+      page,
+      limit,
+      pagesCount,
+    });
 
     exercisesList.innerHTML = '';
     exercisesList.insertAdjacentHTML(
       'beforeend',
-      createGalleryCards(categoriesExcercises.results)
+      createGalleryCards(categoriesExcercises)
     );
 
-    updatePagination();
+    onMount && onMount();
   } catch (error) {
     console.log('Error fetching categories:', error);
   } finally {
@@ -150,7 +150,20 @@ async function creatGalleryMarkup(filter) {
 
 export async function homePageCategoriesLayout() {
   filterMuscleItem.classList.add('active');
-  creatGalleryMarkup('Muscles');
+  creatGalleryMarkup({
+    category: 'Muscles',
+    onMount: () => {
+      initPagination({
+        id: 'exercises',
+        onChange: ({ page }) => {
+          creatGalleryMarkup({
+            category: 'Muscles',
+            page,
+          });
+        },
+      });
+    },
+  });
 }
 
 function createGalleryCards(images) {
@@ -225,8 +238,6 @@ export async function handleCategories(event = null) {
     exercisesListContainer.classList.add('hidden');
   }
 
-  //Log parameters
-  console.log(fetchParams);
   document.querySelector('.loader').classList.toggle('is-active', true);
   const filteredExercises = await fetchExercises({ ...fetchParams });
   const {
@@ -236,9 +247,6 @@ export async function handleCategories(event = null) {
     totalPages: pagesCount,
   } = filteredExercises;
   document.querySelector('.loader').classList.toggle('is-active', false);
-
-  // Log results
-  console.log('Fetched Exercises', filteredExercises);
 
   showSearch(items);
   setItems(items);
