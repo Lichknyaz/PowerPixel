@@ -11,11 +11,11 @@
   column-gap: 16px;
 }
 
-@media only screen and (min-width: 1440px) {
-  .filtered-exercises-list-container {
-    flex-grow: 1;
-  }
+.filtered-exercises-raiting-container {
+  display: flex;
+  gap: 25px;
 }
+
 .filtered-exercises-categories-raiting {
   display: flex;
   justify-content: center;
@@ -50,7 +50,6 @@
 
 .filtered-categories-content-info {
   display: flex;
-  gap: 10px;
 }
 
 .filtered-categories-content-info span {
@@ -81,10 +80,14 @@
 
 .start-button {
   display: flex;
+  align-items: center;
   gap: 9px;
 }
 
-/* -----------------exercises cards ------------*/
+.start-button svg {
+  width: 16px;
+  height: 16px;
+}
 
 @media only screen and (min-width: 768px) {
   .filtered-exercises-categories-list {

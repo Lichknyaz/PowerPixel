@@ -71,7 +71,7 @@ toEndBtn.addEventListener('click', () => changePage(totalPages));
 pagesList.addEventListener('click', e => {
   if (e.target.tagName === 'BUTTON') {
     const newPage = Number(e.target.dataset.page);
-    console.log(page);
+
     changePage(newPage);
   }
 });
@@ -187,8 +187,16 @@ let fetchParams = {};
 
 exercisesList.addEventListener('click', handleCategories);
 
-export async function handleCategories(event) {
-  const listItem = event.target.closest('.exercises-categories-item');
+export async function handleCategories(event = null) {
+  let listItem;
+
+  if (event) {
+    listItem = event.target.closest('.exercises-categories-item');
+  } else {
+    const firstItem = exercisesList.querySelector('.exercises-categories-item');
+    listItem = firstItem;
+  }
+
   filteredExerciseListContainer.classList.remove('hidden');
 
   // Fetch parameters for exercises
@@ -253,16 +261,17 @@ const drawFilteredExercises = () => {
     .map(({ id, rating, name, burnedCalories, bodyPart, target }) => {
       return `<li>
                 <div class="filtered-exercises-categories-list-item">
+                <div class="filtered-exercises-raiting-container">
                 <p class="workout"> Workout
                   </p>
                 <div class="filtered-exercises-categories-raiting">
                 ${rating}
                 <svg class="star-icon" aria-hidden="true" width="24" height="24">
                       <use href="./img/sprite.svg#stars"></use>
-                    </svg></div>
+                    </svg></div></div>
                 <button class="start-button" data-id="${id}">Start
-                  <svg class="icon-arrow" aria-hidden="true" width="24" height="24">
-                    <use href="./img/sprite.svg#icon-arrow"></use>
+                  <svg class="icon-arrow" aria-hidden="true" width="18" height="18">
+                    <use href="./img/sprite.svg#icon-arrow-right"></use>
                   </svg>
                 </button>
                 <div class="filtered-categories-content">
