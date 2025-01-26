@@ -5,19 +5,13 @@ import { getAllFavorites, toggleFavorites } from './storage';
 
 // Завантаження обраних вправ
 export function loadFavorites() {
-  console.log(4);
   const favoritesList = document.querySelector('.favorites-list');
   const noFavoritesMessage = document.querySelector('.no-favorites-message');
 
   const favorites = getAllFavorites();
-  console.log({
-    favorites,
-  });
 
   // Очищення контейнера
   favoritesList.innerHTML = '';
-
-  console.log(5, favorites.length);
 
   if (!favorites.length) {
     // Показати повідомлення, якщо немає обраних вправ
@@ -82,12 +76,6 @@ function createFavoriteCard(exercise) {
   return card;
 }
 
-console.log({
-  1: getCurrentPath(),
-  2: getCurrentPath() === 'favorites',
-});
-
 if (getCurrentPath() === 'favorites') {
-  console.log(3);
   document.addEventListener('DOMContentLoaded', loadFavorites);
 }
