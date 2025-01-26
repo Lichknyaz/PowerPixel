@@ -275,11 +275,13 @@ const drawFilteredExercises = () => {
                   </svg>
                 </button>
                 <div class="filtered-categories-content">
-                  <div class="filtered-categories-content-title">
-                  <svg class="icon" aria-hidden="true" width="24" height="24">
+               <div class="filtered-categories-content-top"> 
+                <svg class="filtered-categories-icon" aria-hidden="true" width="24" height="24">
                     <use href="./img/sprite.svg#men"></use>
                   </svg>
+                  <div class="filtered-categories-content-title">
                   <h3>${name}</h3>
+                  </div>
                   </div>
                   <div class="filtered-categories-content-info">
                   <p><span>Calories:</span> ${burnedCalories} / 3 min</p>
