@@ -176,6 +176,7 @@ let activePage;
 
 // Сам Fetcher замінити на наш
 function fetchCategories(filter = 'Muscles', page = 1) {
+  document.querySelector('.loader').classList.toggle('is-active', true);
   const response = fetch(
     `https://your-energy.b.goit.study/api/filters?filter=${filter}&page=${page}&limit=10`
   )
@@ -320,9 +321,11 @@ function fetchCategories(filter = 'Muscles', page = 1) {
         disableRightArrows();
         enableLeftArrows();
       });
+      document.querySelector('.loader').classList.toggle('is-active', false);
     })
     .catch(e => {
       console.log(e);
+      document.querySelector('.loader').classList.toggle('is-active', false);
     });
 }
 

@@ -130,6 +130,7 @@ filterEquipmentBtn.addEventListener('click', async () => {
 async function creatGalleryMarkup(filter) {
   try {
     currentFilter = filter;
+    document.querySelector('.loader').classList.toggle('is-active', true);
     categoriesExcercises = await fetchCategories(filter, page);
     totalPages = categoriesExcercises.totalPages;
 
@@ -142,6 +143,8 @@ async function creatGalleryMarkup(filter) {
     updatePagination();
   } catch (error) {
     console.log('Error fetching categories:', error);
+  } finally {
+    document.querySelector('.loader').classList.toggle('is-active', false);
   }
 }
 
@@ -216,6 +219,7 @@ export async function handleCategories() {
 
   //Log parameters
   console.log(fetchParams);
+  document.querySelector('.loader').classList.toggle('is-active', true);
   const filteredExercises = await fetchExercises({ ...fetchParams });
   const {
     results: items,
@@ -223,6 +227,7 @@ export async function handleCategories() {
     perPage: limit,
     totalPages: pagesCount,
   } = filteredExercises;
+  document.querySelector('.loader').classList.toggle('is-active', false);
 
   // Log results
   console.log('Fetched Exercises', filteredExercises);
