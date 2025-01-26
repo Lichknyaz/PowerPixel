@@ -145,7 +145,7 @@ body:has(.modal-backdrop.is-open) {
 
 .rate-icon {
   display: block;
-  stroke: grey;
+  fill: var(--color-white-20);
 }
 
 .modal-details {
@@ -311,7 +311,7 @@ body:has(.modal-backdrop.is-open) {
     white-space: nowrap;
     line-height: 24px;
     flex: 1 1 auto;
-    max-width: 194px;
+    max-width: 242px;
     box-sizing: border-box;
     min-height: 48px;
     width: 100%;
