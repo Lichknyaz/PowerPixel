@@ -71,7 +71,7 @@ toEndBtn.addEventListener('click', () => changePage(totalPages));
 pagesList.addEventListener('click', e => {
   if (e.target.tagName === 'BUTTON') {
     const newPage = Number(e.target.dataset.page);
-    console.log(page);
+
     changePage(newPage);
   }
 });
@@ -262,7 +262,7 @@ const drawFilteredExercises = () => {
                       <use href="./img/sprite.svg#stars"></use>
                     </svg></div></div>
                 <button class="start-button" data-id="${id}">Start
-                  <svg class="icon-arrow" aria-hidden="true" width="24" height="24">
+                  <svg class="icon-arrow" aria-hidden="true" width="18" height="18">
                     <use href="./img/sprite.svg#icon-arrow-right"></use>
                   </svg>
                 </button>
