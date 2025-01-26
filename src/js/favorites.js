@@ -1,19 +1,19 @@
 // favorites.js
 
 import { getCurrentPath } from './header-toggle';
-import { toggleFavorites } from './storage';
+import { getAllFavorites, toggleFavorites } from './storage';
 
 // Завантаження обраних вправ
 export function loadFavorites() {
   const favoritesList = document.querySelector('.favorites-list');
   const noFavoritesMessage = document.querySelector('.no-favorites-message');
 
-  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  const favorites = getAllFavorites();
 
   // Очищення контейнера
   favoritesList.innerHTML = '';
 
-  if (favorites.length === 0) {
+  if (!favorites.length) {
     // Показати повідомлення, якщо немає обраних вправ
     noFavoritesMessage.style.display = 'block';
     favoritesList.style.display = 'none';
@@ -76,12 +76,6 @@ function createFavoriteCard(exercise) {
   return card;
 }
 
-// Ініціалізація сторінки обраного
-function initFavoritesPage() {
-  loadFavorites();
-}
-
 if (getCurrentPath() === 'favorites') {
-
-document.addEventListener('DOMContentLoaded', initFavoritesPage);
+  document.addEventListener('DOMContentLoaded', loadFavorites);
 }

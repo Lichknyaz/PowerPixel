@@ -16,7 +16,7 @@ function setActiveLink(activeLink) {
 }
 
 function sanitizePage(page) {
-  return page.replace('.html', '').replace('.', '').replace('/', '');
+  return page.replace('.html', '').replace('.', '').replace('/', '').replace('PowerPixel/', '');
 }
 
 window.addEventListener('load', () => {
