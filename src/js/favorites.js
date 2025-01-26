@@ -18,8 +18,7 @@ function loadFavorites() {
     favoritesList.style.display = 'none';
   } else {
     // Сховати повідомлення про відсутність обраних вправ
-    noFavoritesMessage.style.display = 'none';
-    favoritesList.style.display = 'block';
+    noFavoritesMessage.classList.add('hidden');
 
     // Відобразити кожну обрану вправу
     favorites.forEach((exercise, index) => {
@@ -34,15 +33,33 @@ function createFavoriteCard(exercise, index) {
   const card = document.createElement('li');
   card.classList.add('exercise-card');
 
-  card.innerHTML = `
-    <div class="exercise-info">
-      <h3>${exercise.name}</h3>
-      <p><strong>Calories:</strong> ${exercise.burnedCalories} / 3 min</p>
-      <p><strong>Body Part:</strong> ${exercise.bodyPart}</p>
-      <p><strong>Target:</strong> ${exercise.target}</p>
+  card.innerHTML = `<li>
+  <div class="filtered-exercises-categories-list-item">
+  <p class="workout"> Workout
+    </p>
+  <div class="remove-icon">
+  <button class="remove-button" data-id="${exercise.id}">Remove
+  <svg class="icon" aria-hidden="true" width="24" height="24">
+  <use href="./img/sprite.svg#basket"></use>
+</svg></button></div>
+  <button class="start-button" data-id="${exercise.id}">Start
+    <svg class="icon" aria-hidden="true" width="24" height="24">
+      <use href="./img/sprite.svg#icon-arrow-single-right"></use>
+    </svg>
+  </button>
+  <div class="filtered-categories-content">
+    <div class="filtered-categories-content-title">
+    <svg class="icon" aria-hidden="true" width="24" height="24">
+      <use href="./img/sprite.svg#men"></use>
+    </svg>
+    <h3>${exercise.name}</h3>
     </div>
-    <button class="remove-button" data-id="${exercise.id}">Remove</button>
-  `;
+    <div class="filtered-categories-content-info">
+    <p><span>Calories:</span> ${exercise.burnedCalories} / 3 min</p>
+    <p><span>Body Part:</span> ${exercise.bodyPart}</p>
+    <p><span>Target:</span>${exercise.target}</p></div></div>
+  </div>
+</li>`;
 
   // Обробник подій для кнопки "Remove"
   const removeButton = card.querySelector('.remove-button');

@@ -111,3 +111,14 @@ section.favorites {
   line-height: 1.6;
   /* Висота рядка для кращої читабельності */
 }
+
+.no-favorites-message.hidden {
+  visibility: hidden;
+}
+
+ul.favorites-list {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 32px;
+  column-gap: 16px;
+}
