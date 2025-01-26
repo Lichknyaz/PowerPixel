@@ -24,20 +24,6 @@
   fill: var(--color-background);
 }
 
-.social-media-links li a:hover,
-.social-media-links li a:focus,
-.social-media-links li a:active {
-  border-color: var(--color-background);
-  background-color: var(--color-background);
-  outline: none;
-}
-
-.social-media-links li a:hover svg,
-.social-media-links li a:focus svg,
-.social-media-links li a:active svg {
-  fill: var(--color-black-100);
-}
-
 .social-media-links--white li a {
   border: 1px solid rgba(36, 36, 36, 0.1);
 }
@@ -46,15 +32,31 @@
   fill: var(--color-black-100);
 }
 
-.social-media-links--white li a:hover,
-.social-media-links--white li a:focus,
-.social-media-links--white li a:active {
-  background-color: rgba(36, 36, 36, 0.8);
-  background-color: rgba(36, 36, 36, 0.8);
-}
+@media only screen and (min-width: 768px) {
+  .social-media-links li a:hover,
+  .social-media-links li a:focus,
+  .social-media-links li a:active {
+    border-color: var(--color-background);
+    background-color: var(--color-background);
+    outline: none;
+  }
 
-.social-media-links--white li a:hover svg,
-.social-media-links--white li a:focus svg,
-.social-media-links--white li a:active svg {
-  fill: var(--color-background);
+  .social-media-links li a:hover svg,
+  .social-media-links li a:focus svg,
+  .social-media-links li a:active svg {
+    fill: var(--color-black-100);
+  }
+
+  .social-media-links--white li a:hover,
+  .social-media-links--white li a:focus,
+  .social-media-links--white li a:active {
+    background-color: rgba(36, 36, 36, 0.8);
+    background-color: rgba(36, 36, 36, 0.8);
+  }
+
+  .social-media-links--white li a:hover svg,
+  .social-media-links--white li a:focus svg,
+  .social-media-links--white li a:active svg {
+    fill: var(--color-background);
+  }
 }
