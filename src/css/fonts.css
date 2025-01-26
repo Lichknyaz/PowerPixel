@@ -1,15 +1,17 @@
 @font-face {
-  font-family: 'DMSans';
-  src: url('/fonts/DMSans-9ptRegular.woff2') format('woff2'),
-    url('/fonts/DMSans-9ptRegular.woff') format('woff');
-  font-weight: normal;
+  font-family: 'DM Sans';
+  src: url('../public/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf')
+  format('truetype');
+  font-weight: 400 500;
   font-style: normal;
+  font-display: swap;
 }
 
-/* @font-face {
-  font-family: 'DMSans';
-  src: url('/fonts/DMSans-9ptltalic.woff2') format('woff2'),
-    url('/fonts/DMSans-9ptltalic.woff') format('woff');
-  font-weight: normal;
+@font-face {
+  font-family: 'DM Sans';
+  src: url('../public/fonts/DM_Sans/DMSans-Italic-VariableFont_opsz,wght.ttf')
+  format('truetype');
+  font-weight: 400 500;
   font-style: italic;
-} */
+  font-display: swap;
+}
