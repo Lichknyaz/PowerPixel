@@ -1,4 +1,9 @@
-import { addToFavorites, getItemById } from './storage';
+import { fetchExerciseById } from './api';
+import {
+  findFavorite,
+  TOGGLE_FAVORITES_RESULT_MAP,
+  toggleFavorites,
+} from './storage';
 
 const modalContainer = document.querySelector('.modal-container');
 
@@ -12,18 +17,23 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-function drawModal(id) {
-  const item = getItemById(id);
-  modalContainer.innerHTML = getModalHTML(item);
+async function drawModal(id) {
+  // eslint-disable-next-line no-unused-vars
+  const { _id, ...otherData } = await fetchExerciseById(id);
+  modalContainer.innerHTML = getModalHTML({ id, ...otherData });
 
   const modal = document.querySelector('.modal-backdrop');
   const modalCloseButton = document.querySelector('.modal-close');
   const modalFavorite = document.querySelector('.modal-favorite');
   const closeFn = closeModal({ modal, modalCloseButton });
 
+  const { result } = findFavorite(id);
+  handleFavorireResult({ result, modalFavorite });
+
   modalCloseButton.addEventListener('click', closeFn); //
   modalFavorite.addEventListener('click', () => {
-    addToFavorites(id);
+    const result = toggleFavorites(id);
+    handleFavorireResult({ result, modalFavorite });
   });
 
   modal.classList.add('is-open');
@@ -31,6 +41,30 @@ function drawModal(id) {
 
   document.addEventListener('keydown', handleEscapeKey({ closeFn }));
   modal.addEventListener('click', handleBackdropClick({ modal, closeFn }));
+}
+
+const toggleFavoritesResultHandlerMap = {
+  [TOGGLE_FAVORITES_RESULT_MAP.ADDED]: addFavoriteHandler,
+  [TOGGLE_FAVORITES_RESULT_MAP.REMOVED]: removeFavoriteHandler,
+};
+
+function handleFavorireResult({ result, modalFavorite }) {
+  const handler = toggleFavoritesResultHandlerMap[result];
+  handler({ modalFavorite });
+}
+
+function addFavoriteHandler({ modalFavorite }) {
+  modalFavorite.innerHTML = `<span>Remove</span>
+    <svg class="heart-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="fill: currentColor;fill: currentColor;">
+      <use href="./img/sprite.svg#trash"></use>
+    </svg>`;
+}
+
+function removeFavoriteHandler({ modalFavorite }) {
+  modalFavorite.innerHTML = `<span>Add to favorites</span>
+                <svg class="heart-icon" width="20" height="20">
+                  <use href="./img/sprite.svg#heart"></use>
+                </svg>`;
 }
 
 function handleEscapeKey({ closeFn }) {
@@ -130,10 +164,7 @@ function getModalHTML({
             <!-- Footer -->
             <div class="modal-footer">
               <button class="modal-favorite" data-favorite="false" data-id="${id}">
-                Add to favorites
-                <svg class="heart-icon" width="20" height="20">
-                  <use href="./img/sprite.svg#heart"></use>
-                </svg>
+                
               </button>
             </div>
           </div>

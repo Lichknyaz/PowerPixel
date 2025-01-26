@@ -1,6 +1,6 @@
 // favorites.js
 
-import { removeFavorite } from './storage';
+import { toggleFavorites } from './storage';
 
 // Завантаження обраних вправ
 function loadFavorites() {
@@ -29,7 +29,7 @@ function loadFavorites() {
 }
 
 // Функція для створення картки обраної вправи
-function createFavoriteCard(exercise, index) {
+function createFavoriteCard(exercise) {
   const card = document.createElement('li');
   card.classList.add('exercise-card');
 
@@ -64,7 +64,7 @@ function createFavoriteCard(exercise, index) {
   const removeButton = card.querySelector('.remove-button');
   removeButton.addEventListener('click', event => {
     const id = event.target.attributes['data-id'].value;
-    removeFavorite(id);
+    toggleFavorites(id);
     loadFavorites();
   });
 

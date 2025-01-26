@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   homePageCategoriesLayout();
 });
 
-
 import './js/storage.js';
 import './js/mobilemenu.js';
 import './js/header-toggle.js';
