@@ -2,7 +2,6 @@ import { handleCategories } from './categories';
 import { setSearch } from './storage';
 
 const searchForm = document.querySelector('.js-search-form');
-const searchInput = document.querySelector('.js-search-input');
 
 searchForm.addEventListener('submit', function (event) {
   event.preventDefault();

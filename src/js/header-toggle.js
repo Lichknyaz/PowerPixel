@@ -6,11 +6,16 @@ function setActiveLink(activeLink) {
   activeLink.parentElement.classList.add('active');
 }
 
+function sanitizePage(page) {
+  return page.replace('.html', '').replace('.', '').replace('/', '');
+}
+
 window.addEventListener('load', () => {
-  const currentPath = window.location.pathname;
-  const matchingLink = [...navLinks].find(link =>
-    currentPath.includes(link.getAttribute('href'))
-  );
+  const currentPath = sanitizePage(window.location.pathname);
+  const matchingLink = [...navLinks].find(link => {
+    const linkToFind = sanitizePage(link.getAttribute('href'));
+    return currentPath.includes(linkToFind);
+  });
 
   if (matchingLink) {
     setActiveLink(matchingLink);
