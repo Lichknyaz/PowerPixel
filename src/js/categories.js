@@ -187,8 +187,8 @@ let fetchParams = {};
 
 exercisesList.addEventListener('click', handleCategories);
 
-export async function handleCategories() {
-  const listItem = document.querySelector('.exercises-categories-item');
+export async function handleCategories(event) {
+  const listItem = event.target.closest('.exercises-categories-item');
   filteredExerciseListContainer.classList.remove('hidden');
 
   // Fetch parameters for exercises
