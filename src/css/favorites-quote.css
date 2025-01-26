@@ -19,14 +19,6 @@ section.favorites {
   display: block;
 }
 
-.remove-icon {
-  display: block;
-  stroke: var(--color-black-100);
-}
-
-.icon-arrow {
-  stroke: var(--color-black-100);
-}
 
 @media only screen and (min-width: 768px) {
   .favorites-content {
@@ -98,36 +90,3 @@ section.favorites {
   margin-bottom: 6px;
 }
 
-.favorites-added-exercises {
-  margin: auto;
-}
-
-.favorites-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* Стилі для повідомлення про відсутність вправ */
-.no-favorites-message {
-  display: none;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1.25rem;
-  color: #333;
-  /* Основний колір тексту */
-  text-align: center;
-  margin: 20px auto;
-  /* Відступи згори та знизу */
-  max-width: 600px;
-  /* Максимальна ширина для тексту */
-  line-height: 1.6;
-  /* Висота рядка для кращої читабельності */
-}
-
-.no-favorites-message.hidden {
-  visibility: hidden;
-}
-
-.favorites.pagination-container {
-  padding-bottom: 80px;
-}
