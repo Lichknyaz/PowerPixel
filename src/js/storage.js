@@ -31,17 +31,65 @@ export function setPagination({ page, limit, pagesCount }) {
   };
 }
 
-export function addToFavorites(id) {
-  const currentFav = JSON.parse(localStorage.getItem('favorites'));
+export const TOGGLE_FAVORITES_RESULT_MAP = {
+  ADDED: 'added',
+  REMOVED: 'removed',
+};
+
+export function getAllFavorites() {
+  const value = localStorage.getItem('favorites');
+
+  if (value) {
+    return JSON.parse(value);
+  }
+
+  return [];
+}
+
+export function findFavorite(payloadId) {
+  /**
+   * @type {any[]}
+   */
+  const list = getAllFavorites();
+  const item = list.find(({ id }) => id === payloadId);
+  return {
+    result: item
+      ? TOGGLE_FAVORITES_RESULT_MAP.ADDED
+      : TOGGLE_FAVORITES_RESULT_MAP.REMOVED,
+    item,
+    list,
+  };
+}
+
+export function toggleFavorites(id) {
+  const { item, list } = findFavorite(id);
+
+  if (item) {
+    removeFavorite({ list, id });
+    return TOGGLE_FAVORITES_RESULT_MAP.REMOVED;
+  }
+
+  addToFavorites({ list, id });
+  return TOGGLE_FAVORITES_RESULT_MAP.ADDED;
+}
+
+function addToFavorites({ list, id }) {
   const item = getItemById(id);
-  const newFav = [...currentFav, item];
+  const newFav = [...list, item];
   localStorage.setItem('favorites', JSON.stringify(newFav));
 }
 
-export function removeFavorite(payloadId) {
-  const currentFav = JSON.parse(localStorage.getItem('favorites'));
-  const newFav = currentFav.filter(({ id }) => payloadId !== id);
-  localStorage.setItem('favorites', JSON.stringify(newFav));
+function removeFavorite({ list, id: payloadId }) {
+  /**
+   * @type {any[]}
+   */
+  const newFav = list.filter(({ id }) => payloadId !== id);
+
+  if (newFav.length) {
+    localStorage.setItem('favorites', JSON.stringify(newFav));
+  } else {
+    localStorage.removeItem('favorites');
+  }
 }
 
 export function setSearch(value) {
