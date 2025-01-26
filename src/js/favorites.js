@@ -37,14 +37,13 @@ function createFavoriteCard(exercise, index) {
   <div class="filtered-exercises-categories-list-item">
   <p class="workout"> Workout
     </p>
-  <div class="remove-icon">
-  <button class="remove-button" data-id="${exercise.id}">Remove
-  <svg class="icon" aria-hidden="true" width="24" height="24">
+  <button class="remove-button" data-id="${exercise.id}">
+  <svg class="remove-icon" aria-hidden="true" width="24" height="24">
   <use href="./img/sprite.svg#basket"></use>
-</svg></button></div>
+</svg></button>
   <button class="start-button" data-id="${exercise.id}">Start
-    <svg class="icon" aria-hidden="true" width="24" height="24">
-      <use href="./img/sprite.svg#icon-arrow-single-right"></use>
+    <svg class="icon-arrow" aria-hidden="true" width="24" height="24">
+      <use href="./img/sprite.svg#icon-arrow"></use>
     </svg>
   </button>
   <div class="filtered-categories-content">

@@ -19,6 +19,18 @@ section.favorites {
   display: block;
 }
 
+.remove-icon {
+  display: block;
+  stroke: var(--color-black-100);
+}
+
+.icon-arrow {
+  display: block;
+  width: 100%; /* Ensures scaling within parent */
+  height: 100%;
+  stroke: var(--color-black-100);
+}
+
 @media only screen and (min-width: 768px) {
   .favorites-content {
     flex-direction: column;
@@ -95,6 +107,7 @@ section.favorites {
 
 /* Стилі для повідомлення про відсутність вправ */
 .no-favorites-message {
+  display: none;
   font-family: 'DM Sans', sans-serif;
   font-size: 1.25rem;
   color: #333;

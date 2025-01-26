@@ -261,8 +261,8 @@ const drawFilteredExercises = () => {
                       <use href="./img/sprite.svg#stars"></use>
                     </svg></div>
                 <button class="start-button" data-id="${id}">Start
-                  <svg class="icon" aria-hidden="true" width="24" height="24">
-                    <use href="./img/sprite.svg#icon-arrow-single-right"></use>
+                  <svg class="icon-arrow" aria-hidden="true" width="24" height="24">
+                    <use href="./img/sprite.svg#icon-arrow"></use>
                   </svg>
                 </button>
                 <div class="filtered-categories-content">
