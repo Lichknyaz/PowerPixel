@@ -35,6 +35,7 @@ function createFavoriteCard(exercise) {
 
   card.innerHTML = `<li>
   <div class="filtered-exercises-categories-list-item">
+  <div class="favorites-item-header">
   <p class="workout"> Workout
     </p>
   <button class="remove-button" data-id="${exercise.id}">
@@ -46,9 +47,10 @@ function createFavoriteCard(exercise) {
       <use href="./img/sprite.svg#icon-arrow-right"></use>
     </svg>
   </button>
+  </div>
   <div class="filtered-categories-content">
     <div class="filtered-categories-content-title">
-    <svg class="icon" aria-hidden="true" width="24" height="24">
+    <svg class="filtered-categories-icon" aria-hidden="true" width="24" height="24">
       <use href="./img/sprite.svg#men"></use>
     </svg>
     <h3>${exercise.name}</h3>
