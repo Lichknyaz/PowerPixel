@@ -27,7 +27,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 335px;
-  height: 210px;
+  min-height: 141px;
   background-color: white;
   border-radius: 15px;
   gap: 10px;
@@ -36,13 +36,23 @@
   justify-content: space-between;
 }
 
+.filtered-categories-content-top {
+  display: flex;
+}
+
 .filtered-categories-content-title {
   display: flex;
+  overflow: hidden;
   gap: 16px;
   margin-bottom: 16px;
 }
 
 .filtered-categories-content-title h3 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  max-width: 256px;
+  overflow: hidden;
   font-size: 20px;
   line-height: 100%;
   text-transform: capitalize;
@@ -65,7 +75,9 @@
   max-width: 100px;
 }
 
-.filtered-categories-content-title .icon {
+.filtered-categories-icon {
+  flex: 0 0 24px;
+  margin-right: 16px;
   width: 24px;
   height: 24px;
   background-color: #242424;
@@ -106,6 +118,7 @@
 
   .filtered-categories-content-title h3 {
     font-size: 24px;
+    max-width: 355px;
   }
 
   .filtered-categories-content-info {
