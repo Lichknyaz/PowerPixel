@@ -135,7 +135,6 @@ function getModalHTML({
                   <use href="./img/sprite.svg#heart"></use>
                 </svg>
               </button>
-              <button class="modal-rating-button">Give a rating</button>
             </div>
           </div>
         </div>

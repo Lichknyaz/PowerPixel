@@ -10,11 +10,16 @@
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
       rel="stylesheet"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/modern-normalize@3.0.0/modern-normalize.min.css"
+      media="print"
+      onload="this.media='all'"
     />
+
     <link rel="stylesheet" href="./css/styles.css" />
 
     <script type="module" src="./js/pagination.js" defer></script>
@@ -39,6 +44,6 @@
       </div>
     </main>
     <load src="./partials/footer.html" />
-    <script type="module" src="./main.js"></script>
+    <script type="module" src="./main.js" defer></script>
   </body>
 </html>
