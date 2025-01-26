@@ -113,16 +113,16 @@ body:has(.menu-backdrop.is-open) {
   fill: var(--color-white-100);
 }
 
-@media only screen and (min-width: 768px) {
-  .social-container-item {
-    min-width: 44px;
-    min-height: 44px;
-  }
-}
-
 .mobile-menu-icon {
   display: inline-block;
   stroke-width: 1;
   stroke: var(--color-black-100);
   fill: var(--color-black-100);
+}
+
+@media only screen and (min-width: 768px) {
+  .social-container-item {
+    min-width: 44px;
+    min-height: 44px;
+  }
 }
