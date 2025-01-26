@@ -1,9 +1,10 @@
 // favorites.js
 
+import { getCurrentPath } from './header-toggle';
 import { toggleFavorites } from './storage';
 
 // Завантаження обраних вправ
-function loadFavorites() {
+export function loadFavorites() {
   const favoritesList = document.querySelector('.favorites-list');
   const noFavoritesMessage = document.querySelector('.no-favorites-message');
 
@@ -80,4 +81,7 @@ function initFavoritesPage() {
   loadFavorites();
 }
 
+if (getCurrentPath() === 'favorites') {
+
 document.addEventListener('DOMContentLoaded', initFavoritesPage);
+}

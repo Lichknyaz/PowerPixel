@@ -1,5 +1,14 @@
 const navLinks = document.querySelectorAll('.header-nav-link');
 
+let currentPath;
+
+export function getCurrentPath() {
+  if (!currentPath) {
+    currentPath = sanitizePage(window.location.pathname)
+  }
+  return currentPath;
+}
+
 function setActiveLink(activeLink) {
   navLinks.forEach(nav => nav.parentElement.classList.remove('active'));
 
@@ -11,10 +20,9 @@ function sanitizePage(page) {
 }
 
 window.addEventListener('load', () => {
-  const currentPath = sanitizePage(window.location.pathname);
   const matchingLink = [...navLinks].find(link => {
     const linkToFind = sanitizePage(link.getAttribute('href'));
-    return currentPath.includes(linkToFind);
+    return getCurrentPath().includes(linkToFind);
   });
 
   if (matchingLink) {
