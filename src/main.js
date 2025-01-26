@@ -14,3 +14,9 @@ import './js/quote.js';
 import './js/scroll-up.js';
 import './js/search.js';
 import './js/modal.js';
+
+import LazyLoad from 'vanilla-lazyload';
+
+const lazyLoadInstance = new LazyLoad({
+  elements_selector: '.lazy',
+});
