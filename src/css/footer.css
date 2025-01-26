@@ -17,12 +17,6 @@
   margin-bottom: 20px;
 }
 
-@media only screen and (min-width: 768px) {
-  .footer .logo {
-    margin-bottom: 32px;
-  }
-}
-
 .footer-content-holder {
   display: grid;
   grid-template-columns: 1fr;
@@ -31,30 +25,6 @@
     'logo'
     'title'
     'form';
-}
-
-@media only screen and (min-width: 768px) {
-  .footer {
-    margin-top: 100px;
-  }
-
-  .footer-content-holder {
-    grid-template-columns: 156px 400px;
-    grid-template-areas:
-      'logo title'
-      'x form';
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .footer {
-    margin-top: 132px;
-  }
-
-  .footer-content-holder {
-    grid-template-columns: 156px 595px 352px;
-    grid-template-areas: 'logo title form';
-  }
 }
 
 .footer .logo-section {
@@ -70,16 +40,6 @@
   margin-bottom: 20px;
 }
 
-@media only screen and (min-width: 768px) {
-  .footer-title {
-    font-size: 56px;
-    font-weight: 400;
-    line-height: 60px;
-    letter-spacing: -0.02em;
-    margin-bottom: 32px;
-  }
-}
-
 .footer-title span {
   font-style: italic;
 }
@@ -87,12 +47,6 @@
 .subscription-form-holder {
   margin-bottom: 120px;
   grid-area: form;
-}
-
-@media only screen and (min-width: 768px) {
-  .subscription-form-holder {
-    max-width: 298px;
-  }
 }
 
 .subscription-form-holder h3 {
@@ -142,6 +96,33 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .footer .logo {
+    margin-bottom: 32px;
+  }
+
+  .footer {
+    margin-top: 100px;
+  }
+
+  .footer-content-holder {
+    grid-template-columns: 156px 400px;
+    grid-template-areas:
+      'logo title'
+      'x form';
+  }
+
+  .footer-title {
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 60px;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+  }
+
+  .subscription-form-holder {
+    max-width: 298px;
+  }
+
   .privacy-policy {
     justify-content: flex-start;
   }
@@ -156,6 +137,15 @@
 }
 
 @media only screen and (min-width: 1440px) {
+  .footer {
+    margin-top: 132px;
+  }
+
+  .footer-content-holder {
+    grid-template-columns: 156px 595px 352px;
+    grid-template-areas: 'logo title form';
+  }
+
   .privacy-policy {
     justify-content: flex-start;
   }
