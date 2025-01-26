@@ -2,8 +2,10 @@ import { fetchCategories, fetchExercises } from './api.js';
 import { clearPagination, initPagination } from './pagination.js';
 import { hideSearch, showSearch } from './search.js';
 import {
+  getCategoriesData,
   getItems,
   getSearchValue,
+  setCategoriesData,
   setItems,
   setPagination,
 } from './storage.js';
@@ -196,7 +198,6 @@ const exercisesListContainer = document.querySelector(
 const filteredExerciseListContainer = document.querySelector(
   '.filtered-exercises-list-container'
 );
-let fetchParams = {};
 
 exercisesList.addEventListener('click', async event => {
   clearPagination({
@@ -214,7 +215,7 @@ exercisesList.addEventListener('click', async event => {
   });
 });
 
-export async function handleCategories({ page: payloadPage, event }) {
+export async function handleCategories({ page: payloadPage, event, isSearch }) {
   let listItem;
 
   if (event) {
@@ -226,8 +227,9 @@ export async function handleCategories({ page: payloadPage, event }) {
 
   filteredExerciseListContainer.classList.remove('hidden');
 
+  let fetchParams = {};
   // Fetch parameters for exercises
-  if (listItem) {
+  if (listItem && !isSearch) {
     let category = '';
     switch (listItem.getAttribute('data-category-filter')) {
       case 'Muscles':
@@ -242,14 +244,27 @@ export async function handleCategories({ page: payloadPage, event }) {
     }
     // Add pagination
     const target = listItem.getAttribute('data-body-part');
+    fetchParams = {
+      [category]: target,
+      page: payloadPage,
+      limit: 10,
+    };
+
+    setCategoriesData({
+      category,
+      target,
+    });
+
+    exercisesListContainer.classList.add('hidden');
+  } else {
     const keyword = getSearchValue();
+    const { target, category } = getCategoriesData();
     fetchParams = {
       [category]: target,
       page: payloadPage,
       limit: 10,
       keyword,
     };
-    exercisesListContainer.classList.add('hidden');
   }
 
   document.querySelector('.loader').classList.toggle('is-active', true);

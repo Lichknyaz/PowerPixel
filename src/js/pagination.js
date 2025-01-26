@@ -69,3 +69,11 @@ export function clearPagination({ id, container: payloadContainer }) {
 
   container.innerHTML = '';
 }
+
+export function hideCategoryPagination() {
+  document.querySelector(`#pagination-categories`).classList.add('hidden');
+}
+
+export function showCategoryPagination() {
+  document.querySelector(`#pagination-categories`).classList.remove('hidden');
+}

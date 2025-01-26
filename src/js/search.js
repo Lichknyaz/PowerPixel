@@ -1,4 +1,5 @@
 import { handleCategories } from './categories';
+import { hideCategoryPagination, showCategoryPagination } from './pagination';
 import { setSearch } from './storage';
 
 const searchForm = document.querySelector('.js-search-form');
@@ -7,9 +8,14 @@ searchForm.addEventListener('submit', function (event) {
   event.preventDefault();
   const value = event.target.firstElementChild.value;
   setSearch(value);
-  handleCategories({ page: 1 });
-  setSearch('');
-  searchForm.reset();
+
+  if (value) {
+    hideCategoryPagination();
+  } else {
+    showCategoryPagination();
+  }
+
+  handleCategories({ page: 1, isSearch: true });
 });
 
 export function hideSearch() {
