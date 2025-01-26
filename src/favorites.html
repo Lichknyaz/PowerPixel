@@ -21,6 +21,9 @@
     <main>
       <section class="favorites">
         <div class="container">
+          <div class="favorites-title">
+            <h1>Favorites</h1>
+          </div>
           <div class="favorites-content">
             <div class="favorites-sidebar">
               <div class="favorites sidebar-quote-wrapper border-radius">
@@ -83,17 +86,18 @@
                 </picture>
               </div>
             </div>
-            <div class="favorites-added-exercises">
-              <p class="no-favorites-message">
-                It appears that you haven't added any exercises to your
-                favorites yet. To get started, you can add exercises that you
-                like to your favorites for easier access in the future.
-              </p>
+            <div class="favorites-container">
+              <div class="favorites-added-exercises">
+                <p class="no-favorites-message">
+                  It appears that you haven't added any exercises to your
+                  favorites yet. To get started, you can add exercises that you
+                  like to your favorites for easier access in the future.
+                </p>
 
-              <ul class="favorites-list">
-                <!-- Favorite exercises will be dynamically inserted here -->
-                <load src="/partials/pagination.html" />
-              </ul>
+                <ul class="favorites-list">
+                  <!-- Favorite exercises will be dynamically inserted here -->
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -105,7 +109,6 @@
           </svg>
         </a>
       </div>
-      <load src="./partials/pagination.html" />
     </main>
     <script type="module" src="./js/favorites.js" defer></script>
     <script type="module" src="./js/mobilemenu.js" defer></script>
