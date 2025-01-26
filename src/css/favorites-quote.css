@@ -4,6 +4,9 @@ section.favorites {
 
 .favorites-title {
   margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 38px;
 }
 
 .favorites-content {
@@ -140,6 +143,10 @@ section.favorites {
 .favorites-item-header {
   display: flex;
   flex-direction: row;
+}
+
+.favorites-header-remove {
+  display: flex;
 }
 
 .remove-icon {
