@@ -253,13 +253,14 @@ const drawFilteredExercises = () => {
     .map(({ id, rating, name, burnedCalories, bodyPart, target }) => {
       return `<li>
                 <div class="filtered-exercises-categories-list-item">
+                <div class="filtered-exercises-raiting-container">
                 <p class="workout"> Workout
                   </p>
                 <div class="filtered-exercises-categories-raiting">
                 ${rating}
                 <svg class="star-icon" aria-hidden="true" width="24" height="24">
                       <use href="./img/sprite.svg#stars"></use>
-                    </svg></div>
+                    </svg></div></div>
                 <button class="start-button" data-id="${id}">Start
                   <svg class="icon-arrow" aria-hidden="true" width="18" height="18">
                     <use href="./img/sprite.svg#icon-arrow-right"></use>
