@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'DMSans';
+  src: url('/fonts/DMSans-9ptRegular.woff2') format('woff2'),
+    url('/fonts/DMSans-9ptRegular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* @font-face {
+  font-family: 'DMSans';
+  src: url('/fonts/DMSans-9ptltalic.woff2') format('woff2'),
+    url('/fonts/DMSans-9ptltalic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+} */
