@@ -1,6 +1,6 @@
 .header {
   position: relative;
-  padding: 20px 0;
+  padding-top: 20px;
 }
 
 .header .container {
@@ -16,12 +16,6 @@
   flex-grow: 1;
 }
 
-@media only screen and (min-width: 768px) {
-  .header-nav {
-    justify-content: center;
-  }
-}
-
 .header-logo {
   width: 132px;
   height: 24px;
@@ -31,7 +25,68 @@
   display: none;
 }
 
+.header-nav-link {
+  position: relative;
+  display: block;
+  transition: 200ms ease-in;
+}
+.header-nav-link:active {
+  background-color: var(--color-background);
+}
+
+.mobile-menu-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-menu-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.header-socials {
+  display: none;
+}
+
+.socials-icon {
+  display: block;
+}
+
+.socials-link {
+  fill: var(--color-black-100);
+}
+
+.btn-socials.on-white:hover .socials-icon use {
+  fill: var(--color-white-100);
+}
+
+@media only screen and (max-width: 375px) {
+  .mobile-menu-icon {
+    width: 32px;
+    width: 32px;
+  }
+}
+
+@media only screen and (min-width: 375px) and (max-width: 768px) {
+  .mobile-menu-btn {
+    top: 20px;
+    right: 20px;
+  }
+}
+
 @media only screen and (min-width: 768px) {
+  .header {
+    padding-top: 24px;
+  }
+
+  .header-nav {
+    justify-content: center;
+  }
+
   .header-nav-list {
     min-height: 52px;
     min-width: 233px;
@@ -71,64 +126,11 @@
     background-color: var(--color-background);
     color: var(--color-black-100);
   }
-}
 
-@media only screen and (min-width: 1440px) {
-  .header-nav-list {
-    min-width: 265px;
-    padding-left: 56px;
-    padding-right: 56px;
-  }
-}
-
-.header-nav-link {
-  position: relative;
-  display: block;
-  transition: 200ms ease-in;
-}
-.header-nav-link:active {
-  background-color: var(--color-background);
-}
-
-.mobile-menu-btn {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.mobile-menu-icon {
-  width: 32px;
-  height: 32px;
-}
-
-@media only screen and (max-width: 375px) {
-  .mobile-menu-icon {
-    width: 32px;
-    width: 32px;
-  }
-}
-
-@media only screen and (min-width: 375px) and (max-width: 768px) {
-  .mobile-menu-btn {
-    top: 20px;
-    right: 20px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
   .mobile-menu-btn {
     display: none;
   }
-}
 
-.header-socials {
-  display: none;
-}
-
-@media only screen and (min-width: 768px) {
   .header-socials {
     display: flex;
     align-items: center;
@@ -137,14 +139,10 @@
   }
 }
 
-.socials-icon {
-  display: block;
-}
-
-.socials-link {
-  fill: var(--color-black-100);
-}
-
-.btn-socials.on-white:hover .socials-icon use {
-  fill: var(--color-white-100);
+@media only screen and (min-width: 1440px) {
+  .header-nav-list {
+    min-width: 265px;
+    padding-left: 56px;
+    padding-right: 56px;
+  }
 }

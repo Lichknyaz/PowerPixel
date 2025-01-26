@@ -1,5 +1,5 @@
 .section.hero {
-  margin-top: 60px;
+  padding-top: 80px;
 }
 
 .hero-tags-desktop-wrapper {
@@ -76,7 +76,7 @@
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
   .section.hero {
-    margin-top: 80px;
+    padding-top: 100px;
   }
 
   .section.hero p {
@@ -121,7 +121,7 @@
 /* Styles for Desktop devices */
 @media only screen and (min-width: 1440px) {
   .section.hero {
-    margin-top: 76px;
+    padding-top: 96px;
   }
 
   .hero-tags {
