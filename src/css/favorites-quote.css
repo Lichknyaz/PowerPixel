@@ -2,6 +2,10 @@ section.favorites {
   margin-top: 60px;
 }
 
+.favorites-title {
+  margin-bottom: 20px;
+}
+
 .favorites-content {
   display: flex;
   flex-direction: column;
@@ -19,8 +23,11 @@ section.favorites {
   display: block;
 }
 
-
 @media only screen and (min-width: 768px) {
+  .favorites-title {
+    margin-bottom: 32px;
+  }
+
   .favorites-content {
     flex-direction: column;
     gap: 64px;
@@ -301,4 +308,3 @@ section.favorites {
     justify-content: center;
   }
 }
-
