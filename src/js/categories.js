@@ -158,10 +158,14 @@ function createGalleryCards(images) {
     .map(image => {
       const { filter, name, imgURL } = image;
       return ` <li class="exercises-categories-item" data-body-part='${name}' data-category-filter='${filter}'>
-			<button type="button" class="exercises-categories-btn"  alt="${name}" style='background: linear-gradient(0deg, rgba(17, 17, 17, 0.50) 0%, rgba(17, 17, 17, 0.50) 100%), url(${imgURL}) no-repeat;
-background-size: cover;
-	background-position: center;'
-
+			<button type="button" class="exercises-categories-btn" style="background: linear-gradient(0deg, rgba(17, 17, 17, 0.50) 0%, rgba(17, 17, 17, 0.50) 100%)">
+      <img
+        src="${imgURL}"
+        alt="${name}"
+        class="exercises-category-img"
+        loading="lazy"
+         style="background: linear-gradient(0deg, rgba(17, 17, 17, 0.50) 0%, rgba(17, 17, 17, 0.50) 100%);
+           mix-blend-mode: multiply;"/>
 				<div class="exercises-categories-info">
 					<h3 class="exercises-category-title">${name}</h3>
 					<p class="exercises-category-descr">${filter}</p>
@@ -275,7 +279,7 @@ const drawFilteredExercises = () => {
                   </svg>
                 </button>
                 <div class="filtered-categories-content">
-               <div class="filtered-categories-content-top"> 
+               <div class="filtered-categories-content-top">
                 <svg class="filtered-categories-icon" aria-hidden="true" width="24" height="24">
                     <use href="./img/sprite.svg#men"></use>
                   </svg>
