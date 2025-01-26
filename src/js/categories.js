@@ -187,8 +187,16 @@ let fetchParams = {};
 
 exercisesList.addEventListener('click', handleCategories);
 
-export async function handleCategories(event) {
-  const listItem = event.target.closest('.exercises-categories-item');
+export async function handleCategories(event = null) {
+  let listItem;
+
+  if (event) {
+    listItem = event.target.closest('.exercises-categories-item');
+  } else {
+    const firstItem = exercisesList.querySelector('.exercises-categories-item');
+    listItem = firstItem;
+  }
+
   filteredExerciseListContainer.classList.remove('hidden');
 
   // Fetch parameters for exercises
