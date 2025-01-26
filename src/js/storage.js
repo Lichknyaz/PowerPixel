@@ -1,5 +1,9 @@
 const store = {
   items: [],
+  categories: {
+    category: '',
+    target: '',
+  },
   pagination: {
     page: 1,
     limit: 10,
@@ -7,6 +11,17 @@ const store = {
   },
   search: '',
 };
+
+export function setCategoriesData({ category, target }) {
+  store.categories = {
+    category,
+    target,
+  };
+}
+
+export function getCategoriesData() {
+  return store.categories;
+}
 
 export function setItems(arrItems) {
   store.items = arrItems.map(({ _id: id, ...other }) => ({
