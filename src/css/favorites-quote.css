@@ -127,3 +127,7 @@ section.favorites {
 .no-favorites-message.hidden {
   visibility: hidden;
 }
+
+.favorites.pagination-container {
+  padding-bottom: 80px;
+}
