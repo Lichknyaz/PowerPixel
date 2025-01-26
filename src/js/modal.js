@@ -54,9 +54,9 @@ function handleFavorireResult({ result, modalFavorite }) {
 }
 
 function addFavoriteHandler({ modalFavorite }) {
-  modalFavorite.innerHTML = `<span>Remove</span>
-    <svg class="heart-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="fill: currentColor;fill: currentColor;">
-      <use href="./img/sprite.svg#trash"></use>
+  modalFavorite.innerHTML = `<span>Remove from favorites</span>
+    <svg class="remove-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="fill: currentColor;fill: currentColor;">
+      <use href="./img/sprite.svg#icon-trash"></use>
     </svg>`;
 }
 
