@@ -1,6 +1,11 @@
 import { fetchCategories, fetchExercises } from './api.js';
 import { hideSearch, showSearch } from './search.js';
-import { getItems, getSearchValue, setItems, setPagination } from './storage.js';
+import {
+  getItems,
+  getSearchValue,
+  setItems,
+  setPagination,
+} from './storage.js';
 
 // ----------------------- CATEGORIES
 
@@ -15,6 +20,14 @@ export const exercisesList = document.querySelector(
   '.exercises-categories-list'
 );
 
+const filterMuscleItem = document.querySelector('[data-name="Muscles-item"]');
+const filterBodyPartsItem = document.querySelector(
+  '[data-name="Body-parts-item"]'
+);
+const filterEquipmentItem = document.querySelector(
+  '[data-name="Equipment-item"]'
+);
+
 let page = 1;
 let categoriesExcercises;
 
@@ -23,7 +36,6 @@ let currentFilter = '';
 
 // ----------------------- PAGINATION
 
-const paginationContainer = document.querySelector('.pagination-container');
 const toPreviousBtn = document.querySelector('[data-element="to-previous"]');
 const toNextBtn = document.querySelector('[data-element="to-next"]');
 const toBeginBtn = document.querySelector('[data-element="to-begin"]');
@@ -74,11 +86,10 @@ function changePage(newPage) {
 
 // ----------------------- FILTERS
 
-filterMuscleBtn.addEventListener('click', async event => {
-
-  filterMuscleBtn.classList.add('active');
-  filterEquipmentBtn.classList.remove('active');
-  filterBodyPartsBtn.classList.remove('active');
+filterMuscleBtn.addEventListener('click', async () => {
+  filterMuscleItem.classList.add('active');
+  filterEquipmentItem.classList.remove('active');
+  filterBodyPartsItem.classList.remove('active');
 
   exercisesListContainer.classList.remove('hidden');
   filteredExerciseListContainer.classList.add('hidden');
@@ -89,9 +100,9 @@ filterMuscleBtn.addEventListener('click', async event => {
 });
 
 filterBodyPartsBtn.addEventListener('click', async () => {
-  filterMuscleBtn.classList.remove('active');
-  filterEquipmentBtn.classList.remove('active');
-  filterBodyPartsBtn.classList.add('active');
+  filterMuscleItem.classList.remove('active');
+  filterEquipmentItem.classList.remove('active');
+  filterBodyPartsItem.classList.add('active');
 
   exercisesListContainer.classList.remove('hidden');
   filteredExerciseListContainer.classList.add('hidden');
@@ -102,9 +113,9 @@ filterBodyPartsBtn.addEventListener('click', async () => {
 });
 
 filterEquipmentBtn.addEventListener('click', async () => {
-  filterMuscleBtn.classList.remove('active');
-  filterEquipmentBtn.classList.add('active');
-  filterBodyPartsBtn.classList.remove('active');
+  filterMuscleItem.classList.remove('active');
+  filterEquipmentItem.classList.add('active');
+  filterBodyPartsItem.classList.remove('active');
 
   exercisesListContainer.classList.remove('hidden');
   filteredExerciseListContainer.classList.add('hidden');
@@ -135,7 +146,7 @@ async function creatGalleryMarkup(filter) {
 }
 
 export async function homePageCategoriesLayout() {
-  filterMuscleBtn.classList.add('active');
+  filterMuscleItem.classList.add('active');
   creatGalleryMarkup('Muscles');
 }
 
@@ -224,12 +235,12 @@ export async function handleCategories() {
     pagesCount,
   });
 
-  if (items.length > 0 ) {
+  if (items.length > 0) {
     filteredExerciseList.innerHTML = drawFilteredExercises();
   } else {
-    filteredExerciseList.innerHTML = '<strong style="font: inherit; font-size: 24px ">Sorry, No items found</strong>';
+    filteredExerciseList.innerHTML =
+      '<strong style="font: inherit; font-size: 24px ">Sorry, No items found</strong>';
   }
-
 }
 
 const drawFilteredExercises = () => {
