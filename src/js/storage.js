@@ -35,6 +35,10 @@ export function getPaginationData() {
   return store.pagination;
 }
 
+export function setPaginationPage(value) {
+  store.pagination.page = value;
+}
+
 export const TOGGLE_FAVORITES_RESULT_MAP = {
   ADDED: 'added',
   REMOVED: 'removed',

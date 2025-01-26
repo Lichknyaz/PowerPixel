@@ -7,10 +7,14 @@ export function initPagination({
   const container = document.querySelector(`#pagination-${id}`);
   const paginationData = getPaginationData();
 
-  drawPagination({
+  const isDrawed = drawPagination({
     container,
     paginationData,
   });
+
+  if (!isDrawed) {
+    return;
+  }
 
   const pagesList = document.querySelector('[data-element="pages-list"]');
 
@@ -34,7 +38,7 @@ export function initPagination({
 function drawPagination({ container, paginationData: { pagesCount } }) {
   if (pagesCount === 1) {
     container.innerHTML = '';
-    return;
+    return false;
   }
 
   const pagesHTML = Array.from({ length: pagesCount }).reduce(
@@ -52,4 +56,6 @@ function drawPagination({ container, paginationData: { pagesCount } }) {
   );
 
   container.innerHTML = `<ul class="pagination-pages" data-element="pages-list">${pagesHTML}</ul>`;
+
+  return true;
 }
