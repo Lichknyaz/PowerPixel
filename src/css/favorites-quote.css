@@ -102,8 +102,6 @@ section.favorites {
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
-}
-.favorites-added-exercises {
   margin: auto;
 }
 
@@ -131,10 +129,6 @@ section.favorites {
 
 .no-favorites-message.hidden {
   visibility: hidden;
-}
-
-.favorites.pagination-container {
-  padding-bottom: 80px;
 }
 
 .favorites-list {
@@ -177,7 +171,7 @@ section.favorites {
   visibility: hidden;
 }
 
-.favorites.pagination-container {
+.favorites-pagination {
   padding-bottom: 80px;
 }
 
@@ -306,5 +300,9 @@ section.favorites {
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .favorites-pagination {
+    display: none;
   }
 }
