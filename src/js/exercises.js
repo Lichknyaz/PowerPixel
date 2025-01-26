@@ -38,6 +38,7 @@ filterEquipmentBtn.addEventListener('click', async () => {
 // Функція для створення галереї карток
 async function createGalleryMarkup(filter) {
   try {
+    document.querySelector('.loader').classList.toggle('is-active', true);
     categoriesExercises = await fetchCategories(filter, page);
     exercisesList.innerHTML = '';
     exercisesList.insertAdjacentHTML(
@@ -46,6 +47,8 @@ async function createGalleryMarkup(filter) {
     );
   } catch (error) {
     console.log('Error fetching categories:', error);
+  } finally {
+    document.querySelector('.loader').classList.toggle('is-active', false);
   }
 }
 
@@ -65,6 +68,7 @@ async function loadExercisesByBodyPart(bodyPart) {
   exercisesList.innerHTML = ''; // Очищення списку
 
   try {
+    document.querySelector('.loader').classList.toggle('is-active', true);
     const response = await fetchExercises({ bodyPart });
     console.log('Fetched exercises:', response); // Лог для перевірки
 
@@ -80,6 +84,8 @@ async function loadExercisesByBodyPart(bodyPart) {
     }
   } catch (error) {
     console.log('Error fetching exercises:', error);
+  } finally {
+    document.querySelector('.loader').classList.toggle('is-active', false);
   }
 }
 
