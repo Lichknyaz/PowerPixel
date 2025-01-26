@@ -7,7 +7,7 @@ searchForm.addEventListener('submit', function (event) {
   event.preventDefault();
   const value = event.target.firstElementChild.value;
   setSearch(value);
-  handleCategories();
+  handleCategories({ page: 1 });
   setSearch('');
   searchForm.reset();
 });
