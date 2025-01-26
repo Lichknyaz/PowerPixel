@@ -65,7 +65,7 @@ function createFavoriteCard(exercise) {
   // Обробник подій для кнопки "Remove"
   const removeButton = card.querySelector('.remove-button');
   removeButton.addEventListener('click', event => {
-    const id = event.target.attributes['data-id'].value;
+    const id = event.currentTarget.dataset.id;
     toggleFavorites(id);
     loadFavorites();
   });

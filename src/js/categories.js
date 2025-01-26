@@ -256,7 +256,7 @@ export async function handleCategories(event = null) {
     filteredExerciseList.innerHTML = drawFilteredExercises();
   } else {
     filteredExerciseList.innerHTML =
-      '<strong style="font: inherit; font-size: 24px ">Sorry, No items found</strong>';
+      '<strong style="font: inherit; font-size: 24px ">Sorry, no items found</strong>';
   }
 }
 
