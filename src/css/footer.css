@@ -3,7 +3,10 @@
   color: var(--color-background);
   padding-top: 40px;
   padding-bottom: 10px;
-  margin-top: 80px;
+}
+
+.footer-content-holder .social-media-links {
+  margin-bottom: 0;
 }
 
 .logo {
@@ -25,11 +28,12 @@
     'logo'
     'title'
     'form';
+  margin-bottom: 120px;
 }
 
 .footer .logo-section {
-  margin-bottom: 40px;
   grid-area: logo;
+  margin-bottom: 40px;
 }
 
 .footer-title {
@@ -45,7 +49,6 @@
 }
 
 .subscription-form-holder {
-  margin-bottom: 120px;
   grid-area: form;
 }
 
@@ -93,15 +96,21 @@
   font-weight: 400;
   line-height: 18px;
   letter-spacing: -0.02em;
+  row-gap: 10px;
 }
 
 @media only screen and (min-width: 768px) {
-  .footer .logo {
-    margin-bottom: 32px;
+  .footer {
+    padding-top: 64px;
   }
 
-  .footer {
-    margin-top: 100px;
+  .footer-subscription-text {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .footer .logo {
+    margin-bottom: 32px;
   }
 
   .footer-content-holder {
@@ -109,6 +118,7 @@
     grid-template-areas:
       'logo title'
       'x form';
+    margin-bottom: 64px;
   }
 
   .footer-title {
@@ -116,11 +126,10 @@
     font-weight: 400;
     line-height: 60px;
     letter-spacing: -0.02em;
-    margin-bottom: 32px;
   }
 
   .subscription-form-holder {
-    max-width: 298px;
+    width: 298px;
   }
 
   .privacy-policy {
@@ -128,33 +137,38 @@
   }
 
   .privacy-policy li:nth-child(1) {
-    flex-basis: 270px;
+    flex-basis: 305px;
   }
 
   .privacy-policy li:nth-child(2) {
-    flex-basis: 390px;
+    flex-basis: 340px;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  .footer {
-    margin-top: 132px;
-  }
-
   .footer-content-holder {
-    grid-template-columns: 156px 595px 352px;
-    grid-template-areas: 'logo title form';
+    grid-template-columns: 1fr 158px 1fr 115px 1fr;;
+    grid-template-areas: 'logo . title . form';
+    gap: 0;
+    margin-bottom: 70px;
   }
 
+  .footer-title {
+    min-width: 595px;
+  }
+
+  .footer-subscription-text {
+    font-size: 18px;
+  }
   .privacy-policy {
     justify-content: flex-start;
   }
 
   .privacy-policy li:nth-child(1) {
-    flex-basis: 294px;
+    flex-basis: 370px;
   }
 
   .privacy-policy li:nth-child(2) {
-    flex-basis: 730px;
+    flex-basis: 715px;
   }
 }
