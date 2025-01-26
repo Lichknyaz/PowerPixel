@@ -1,4 +1,6 @@
 import { fetchExerciseById } from './api';
+import { loadFavorites } from './favorites';
+import { getCurrentPath } from './header-toggle';
 import {
   findFavorite,
   TOGGLE_FAVORITES_RESULT_MAP,
@@ -34,6 +36,11 @@ async function drawModal(id) {
   modalFavorite.addEventListener('click', () => {
     const result = toggleFavorites(id);
     handleFavorireResult({ result, modalFavorite });
+
+    if (getCurrentPath() === 'favorites') {
+      loadFavorites();
+      closeFn();
+    }
   });
 
   modal.classList.add('is-open');
