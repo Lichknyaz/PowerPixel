@@ -1,5 +1,5 @@
 import { fetchCategories, fetchExercises } from './api.js';
-import { initPagination } from './pagination.js';
+import { clearPagination, initPagination } from './pagination.js';
 import { hideSearch, showSearch } from './search.js';
 import {
   getItems,
@@ -198,9 +198,23 @@ const filteredExerciseListContainer = document.querySelector(
 );
 let fetchParams = {};
 
-exercisesList.addEventListener('click', handleCategories);
+exercisesList.addEventListener('click', async event => {
+  clearPagination({
+    id: 'exercises',
+  });
+  await handleCategories({
+    page: 1,
+    event,
+  });
+  initPagination({
+    id: 'categories',
+    onChange: ({ page }) => {
+      handleCategories({ event, page });
+    },
+  });
+});
 
-export async function handleCategories(event = null) {
+export async function handleCategories({ page: payloadPage, event }) {
   let listItem;
 
   if (event) {
@@ -231,7 +245,7 @@ export async function handleCategories(event = null) {
     const keyword = getSearchValue();
     fetchParams = {
       [category]: target,
-      page: 1,
+      page: payloadPage,
       limit: 10,
       keyword,
     };
