@@ -48,7 +48,7 @@ filterMuscleBtn.addEventListener('click', async () => {
   hideSearch();
   currentCategoryText.innerHTML = '';
 
-    creatGalleryMarkup({
+    await creatGalleryMarkup({
     category: 'Muscles',
     onMount: () => {
       initPagination({
@@ -102,7 +102,7 @@ filterEquipmentBtn.addEventListener('click', async () => {
   currentCategoryText.innerHTML = '';
   hideSearch();
 
-  creatGalleryMarkup({
+  await creatGalleryMarkup({
     category: 'Equipment',
     onMount: () => {
       initPagination({
