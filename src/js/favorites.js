@@ -34,8 +34,8 @@ function createFavoriteCard(exercise) {
   const card = document.createElement('li');
   card.classList.add('exercise-card');
 
-  card.innerHTML = `<li>
-  <div class="filtered-exercises-categories-list-item">
+  card.innerHTML = `
+  <div class="favorites-exercises-categories-list-item">
   <div class="favorites-item-header">
   <div class="favorites-header-remove">
   <p class="workout"> Workout
@@ -52,18 +52,19 @@ function createFavoriteCard(exercise) {
   </button>
   </div>
   <div class="filtered-categories-content">
-    <div class="filtered-categories-content-title">
+  <div class="favorites filtered-categories-content-top"> 
+    <div class="favorites filtered-categories-content-title">
     <svg class="filtered-categories-icon" aria-hidden="true" width="24" height="24">
       <use href="./img/sprite.svg#men"></use>
     </svg>
     <h3>${exercise.name}</h3>
     </div>
-    <div class="filtered-categories-content-info">
+    </div>
+    <div class="favorites filtered-categories-content-info">
     <p><span>Calories:</span> ${exercise.burnedCalories} / 3 min</p>
     <p><span>Body Part:</span> ${exercise.bodyPart}</p>
     <p><span>Target:</span>${exercise.target}</p></div></div>
-  </div>
-</li>`;
+  </div>`;
 
   // Обробник подій для кнопки "Remove"
   const removeButton = card.querySelector('.remove-button');
