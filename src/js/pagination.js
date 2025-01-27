@@ -1,4 +1,4 @@
-import { getPaginationData } from './storage';
+import { getPaginationData, setPaginationPage } from './storage';
 
 export function initPagination({ onChange, id }) {
   const container = document.querySelector(`#pagination-${id}`);
@@ -76,4 +76,33 @@ export function hideCategoryPagination() {
 
 export function showCategoryPagination() {
   document.querySelector(`#pagination-categories`).classList.remove('hidden');
+}
+
+export function setActivePage({ page }) {
+  if (page === 1) {
+    return;
+  }
+
+  const target = document.querySelector(`[data-page="${page}"]`);
+  const currentActiveLi = document.querySelector('.pagination-page.active');
+  const currentActiveBtn = document.querySelector('.page-btn.active');
+
+  currentActiveLi.classList.remove('active');
+  currentActiveBtn.classList.remove('active');
+  target.parentElement.classList.add('active');
+  target.classList.add('active');
+  setPaginationPage(1);
+}
+
+export function restructurePages({ pagesCount, id }) {
+  if (pagesCount <= 1) {
+    const container = document.querySelector(`#pagination-${id}`);
+    clearPagination({ container });
+  } else {
+    const pageToRemove = pagesCount + 1;
+    const evementToRemove = document.querySelector(
+      `[data-page="${pageToRemove}"]`
+    );
+    evementToRemove.remove();
+  }
 }

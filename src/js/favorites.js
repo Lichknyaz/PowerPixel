@@ -1,22 +1,38 @@
 // favorites.js
 
 import { getCurrentPath } from './header-toggle';
-import { getAllFavorites, toggleFavorites } from './storage';
+import { initPagination, restructurePages, setActivePage } from './pagination';
+import {
+  getFilteredFavorites,
+  getPaginationData,
+  toggleFavorites,
+} from './storage';
+
+let currentPagesCount;
 
 // Завантаження обраних вправ
-export function loadFavorites() {
+export function loadFavorites({ page = 1, isInit = false }) {
   const favoritesList = document.querySelector('.favorites-list');
   const noFavoritesMessage = document.querySelector('.no-favorites-message');
 
-  const favorites = getAllFavorites();
+  const favorites = getFilteredFavorites({ page });
+  const { pagesCount } = getPaginationData();
+
+  if (isInit) {
+    currentPagesCount = pagesCount;
+  } else {
+    if (pagesCount !== currentPagesCount) {
+      restructurePages({ id: 'favorites', pagesCount });
+      currentPagesCount = pagesCount;
+    }
+  }
 
   // Очищення контейнера
   favoritesList.innerHTML = '';
 
   if (!favorites.length) {
     // Показати повідомлення, якщо немає обраних вправ
-    noFavoritesMessage.style.display = 'block';
-    favoritesList.style.display = 'none';
+    noFavoritesMessage.classList.remove('hidden');
   } else {
     // Сховати повідомлення про відсутність обраних вправ
     noFavoritesMessage.classList.add('hidden');
@@ -69,13 +85,23 @@ function createFavoriteCard(exercise) {
   const removeButton = card.querySelector('.remove-button');
   removeButton.addEventListener('click', event => {
     const id = event.currentTarget.dataset.id;
+    const paginationPayload = { page: 1 };
     toggleFavorites(id);
-    loadFavorites();
+    loadFavorites({ page: 1 });
+    setActivePage(paginationPayload);
   });
 
   return card;
 }
 
 if (getCurrentPath() === 'favorites') {
-  document.addEventListener('DOMContentLoaded', loadFavorites);
+  document.addEventListener('DOMContentLoaded', () => {
+    loadFavorites({ page: 1, isInit: true });
+    initPagination({
+      id: 'favorites',
+      onChange: ({ page }) => {
+        loadFavorites({ page });
+      },
+    });
+  });
 }
