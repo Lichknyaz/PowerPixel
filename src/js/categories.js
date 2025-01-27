@@ -31,6 +31,8 @@ const filterEquipmentItem = document.querySelector(
   '[data-name="Equipment-item"]'
 );
 
+const currentCategoryText = document.querySelector(".current-category");
+
 let categoriesExcercises;
 
 // ----------------------- FILTERS
@@ -44,8 +46,9 @@ filterMuscleBtn.addEventListener('click', async () => {
   filteredExerciseListContainer.classList.add('hidden');
 
   hideSearch();
+  currentCategoryText.innerHTML = '';
 
-  creatGalleryMarkup({
+    creatGalleryMarkup({
     category: 'Muscles',
     onMount: () => {
       initPagination({
@@ -69,6 +72,7 @@ filterBodyPartsBtn.addEventListener('click', async () => {
   exercisesListContainer.classList.remove('hidden');
   filteredExerciseListContainer.classList.add('hidden');
 
+  currentCategoryText.innerHTML = '';
   hideSearch();
 
   await creatGalleryMarkup({
@@ -95,6 +99,7 @@ filterEquipmentBtn.addEventListener('click', async () => {
   exercisesListContainer.classList.remove('hidden');
   filteredExerciseListContainer.classList.add('hidden');
 
+  currentCategoryText.innerHTML = '';
   hideSearch();
 
   creatGalleryMarkup({
@@ -287,6 +292,7 @@ export async function handleCategories({ page: payloadPage, event, isSearch }) {
 
   if (items.length > 0) {
     filteredExerciseList.innerHTML = drawFilteredExercises();
+    currentCategoryText.innerHTML = ` <span class="exercises-title-slash">/</span> ${listItem.getAttribute('data-category-filter')}`;
   } else {
     filteredExerciseList.innerHTML =
       '<strong style="font: inherit; font-size: 24px ">Sorry, no items found</strong>';
