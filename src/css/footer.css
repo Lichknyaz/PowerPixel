@@ -113,6 +113,10 @@
     margin-bottom: 32px;
   }
 
+  .footer .logo-section {
+    margin-bottom: 0;
+  }
+
   .footer-content-holder {
     grid-template-columns: 156px 400px;
     grid-template-areas:
@@ -155,6 +159,7 @@
 
   .footer-title {
     min-width: 595px;
+    margin-bottom: 0;
   }
 
   .footer-subscription-text {
