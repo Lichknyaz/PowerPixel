@@ -69,6 +69,33 @@ export function getAllFavorites() {
   return [];
 }
 
+export function getFilteredFavorites({ page }) {
+  const limit = 10;
+  const data = getAllFavorites();
+  const totalItems = data.length;
+  const pagesCount = Math.ceil(totalItems / limit);
+
+  if (page < 1) {
+    page = 1;
+  }
+
+  if (page > pagesCount) {
+    page = pagesCount;
+  }
+
+  const startIndex = (page - 1) * limit;
+  const endIndex = Math.min(startIndex + limit, totalItems);
+  const result = data.slice(startIndex, endIndex);
+
+  store.pagination = {
+    page,
+    limit,
+    pagesCount,
+  };
+
+  return result;
+}
+
 export function findFavorite(payloadId) {
   /**
    * @type {any[]}

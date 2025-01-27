@@ -1,6 +1,7 @@
 import { fetchExerciseById } from './api';
 import { loadFavorites } from './favorites';
 import { getCurrentPath } from './header-toggle';
+import { setActivePage } from './pagination';
 import {
   findFavorite,
   TOGGLE_FAVORITES_RESULT_MAP,
@@ -33,12 +34,16 @@ async function drawModal(id) {
   handleFavorireResult({ result, modalFavorite });
 
   modalCloseButton.addEventListener('click', closeFn); //
+
+  // remove favorite
   modalFavorite.addEventListener('click', () => {
     const result = toggleFavorites(id);
     handleFavorireResult({ result, modalFavorite });
 
     if (getCurrentPath() === 'favorites') {
-      loadFavorites();
+      const paginationPayload = { page: 1 };
+      loadFavorites(paginationPayload);
+      setActivePage(paginationPayload);
       closeFn();
     }
   });
