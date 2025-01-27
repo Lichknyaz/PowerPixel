@@ -71,7 +71,7 @@ filterBodyPartsBtn.addEventListener('click', async () => {
 
   hideSearch();
 
-  creatGalleryMarkup({
+  await creatGalleryMarkup({
     category: 'Body parts',
     onMount: () => {
       initPagination({
@@ -312,7 +312,7 @@ const drawFilteredExercises = () => {
                   </svg>
                 </button>
                 <div class="filtered-categories-content">
-               <div class="filtered-categories-content-top"> 
+               <div class="filtered-categories-content-top">
                 <svg class="filtered-categories-icon" aria-hidden="true" width="24" height="24">
                     <use href="./img/sprite.svg#men"></use>
                   </svg>
