@@ -10,6 +10,10 @@ import {
 
 const modalContainer = document.querySelector('.modal-container');
 
+let closeFn;
+let escapeKeyListener;
+let backdropClickListener;
+
 document.addEventListener('DOMContentLoaded', function () {
   document.body.addEventListener('click', event => {
     const target = event.target.closest('.start-button');
@@ -28,7 +32,7 @@ async function drawModal(id) {
   const modal = document.querySelector('.modal-backdrop');
   const modalCloseButton = document.querySelector('.modal-close');
   const modalFavorite = document.querySelector('.modal-favorite');
-  const closeFn = closeModal({ modal, modalCloseButton });
+  closeFn = closeModal({ modal, modalCloseButton });
 
   const { result } = findFavorite(id);
   handleFavorireResult({ result, modalFavorite });
@@ -48,11 +52,14 @@ async function drawModal(id) {
     }
   });
 
+  escapeKeyListener = handleEscapeKey(closeFn);
+  backdropClickListener = handleBackdropClick(modal, closeFn);
+
+  document.addEventListener('keydown', escapeKeyListener);
+  modal.addEventListener('click', backdropClickListener);
+
   modal.classList.add('is-open');
   modalCloseButton.style.display = 'block';
-
-  document.addEventListener('keydown', handleEscapeKey({ closeFn }));
-  modal.addEventListener('click', handleBackdropClick({ modal, closeFn }));
 }
 
 const toggleFavoritesResultHandlerMap = {
@@ -79,7 +86,7 @@ function removeFavoriteHandler({ modalFavorite }) {
                 </svg>`;
 }
 
-function handleEscapeKey({ closeFn }) {
+function handleEscapeKey(closeFn) {
   return function (event) {
     if (event.key === 'Escape') {
       closeFn();
@@ -87,7 +94,7 @@ function handleEscapeKey({ closeFn }) {
   };
 }
 
-function handleBackdropClick({ modal, closeFn }) {
+function handleBackdropClick(modal, closeFn) {
   return function (event) {
     if (event.target === modal) {
       closeFn();
@@ -100,9 +107,9 @@ function closeModal({ modal, modalCloseButton }) {
     modal.classList.remove('is-open');
     modalCloseButton.style.display = 'none';
 
-    document.removeEventListener('keydown', handleEscapeKey);
-    modal.removeEventListener('click', handleBackdropClick);
-    modalCloseButton.removeEventListener('click', closeModal);
+    document.removeEventListener('keydown', escapeKeyListener);
+    modal.removeEventListener('click', backdropClickListener);
+    modalCloseButton.removeEventListener('click', closeFn);
 
     modalContainer.innerHTML = '';
   };
@@ -177,7 +184,7 @@ function getModalHTML({
             <!-- Footer -->
             <div class="modal-footer">
               <button class="modal-favorite" data-favorite="false" data-id="${id}">
-                
+
               </button>
             </div>
           </div>
