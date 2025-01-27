@@ -3,6 +3,8 @@ import { hideCategoryPagination, showCategoryPagination } from './pagination';
 import { setSearch } from './storage';
 
 const searchForm = document.querySelector('.js-search-form');
+const clearBtn = document.querySelector('.search-button-icon-clear');
+const searchButton = document.querySelector('.search-button-submit');
 
 searchForm.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -16,6 +18,12 @@ searchForm.addEventListener('submit', function (event) {
   }
 
   handleCategories({ page: 1, isSearch: true });
+});
+
+clearBtn.addEventListener('click', () => {
+  setTimeout(() => {
+    searchButton.click();
+  }, 0);
 });
 
 export function hideSearch() {
