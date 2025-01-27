@@ -104,6 +104,11 @@ section.favorites {
 }
 
 @media only screen and (min-width: 768px) {
+
+  section.favorites {
+    padding-top: 100px;
+  }
+
   .favorites-title {
     margin-bottom: 32px;
     font-size: 44px;
@@ -162,6 +167,10 @@ section.favorites {
 }
 
 @media only screen and (min-width: 1440px) {
+  section.favorites {
+    padding-bottom: 64px;
+  }
+
   .favorites-content {
     flex-direction: row;
     gap: 32px;
@@ -331,7 +340,7 @@ section.favorites {
 
 .no-favorites-message {
   text-align: center;
-  font-family: "DM Sans", sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
