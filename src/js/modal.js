@@ -102,6 +102,7 @@ function closeModal({ modal, modalCloseButton }) {
 
     document.removeEventListener('keydown', handleEscapeKey);
     modal.removeEventListener('click', handleBackdropClick);
+    modalCloseButton.removeEventListener('click', closeModal);
 
     modalContainer.innerHTML = '';
   };
