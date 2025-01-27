@@ -31,6 +31,8 @@ const filterEquipmentItem = document.querySelector(
   '[data-name="Equipment-item"]'
 );
 
+const currentCategoryText = document.querySelector(".current-category");
+
 let categoriesExcercises;
 
 // ----------------------- FILTERS
@@ -44,8 +46,9 @@ filterMuscleBtn.addEventListener('click', async () => {
   filteredExerciseListContainer.classList.add('hidden');
 
   hideSearch();
+  currentCategoryText.innerHTML = '';
 
-  creatGalleryMarkup({
+    creatGalleryMarkup({
     category: 'Muscles',
     onMount: () => {
       initPagination({
@@ -69,9 +72,10 @@ filterBodyPartsBtn.addEventListener('click', async () => {
   exercisesListContainer.classList.remove('hidden');
   filteredExerciseListContainer.classList.add('hidden');
 
+  currentCategoryText.innerHTML = '';
   hideSearch();
 
-  creatGalleryMarkup({
+  await creatGalleryMarkup({
     category: 'Body parts',
     onMount: () => {
       initPagination({
@@ -95,6 +99,7 @@ filterEquipmentBtn.addEventListener('click', async () => {
   exercisesListContainer.classList.remove('hidden');
   filteredExerciseListContainer.classList.add('hidden');
 
+  currentCategoryText.innerHTML = '';
   hideSearch();
 
   creatGalleryMarkup({
@@ -287,6 +292,7 @@ export async function handleCategories({ page: payloadPage, event, isSearch }) {
 
   if (items.length > 0) {
     filteredExerciseList.innerHTML = drawFilteredExercises();
+    currentCategoryText.innerHTML = ` <span class="exercises-title-slash">/</span> ${listItem.getAttribute('data-category-filter')}`;
   } else {
     filteredExerciseList.innerHTML =
       '<strong style="font: inherit; font-size: 24px ">Sorry, no items found</strong>';
@@ -312,7 +318,7 @@ const drawFilteredExercises = () => {
                   </svg>
                 </button>
                 <div class="filtered-categories-content">
-               <div class="filtered-categories-content-top"> 
+               <div class="filtered-categories-content-top">
                 <svg class="filtered-categories-icon" aria-hidden="true" width="24" height="24">
                     <use href="./img/sprite.svg#men"></use>
                   </svg>

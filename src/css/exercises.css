@@ -8,9 +8,18 @@
   gap: 20px;
 }
 
-.exercises-title {
-  margin-bottom: 20px;
+.current-category {
+  color: rgba(36, 36, 36, 0.50);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+  letter-spacing: -0.4px;
+}
 
+.exercises-title,
+.exercises-title-slash{
+  color: #242424;
   font-size: 28px;
   font-weight: 400;
   line-height: 1.36;
@@ -186,13 +195,25 @@
   .title-filter-container {
     gap: 32px;
   }
-  .exercises-title {
-    margin-bottom: 32px;
+  .current-category {
+    color: rgba(36, 36, 36, 0.50);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px; /* 100% */
+    letter-spacing: -0.48px;
+  }
 
+  .exercises-title,
+  .exercises-title-slash{
+    margin-bottom: 32px;
+    color: #242424;
     font-size: 44px;
     line-height: 1.09;
     letter-spacing: -0.02em;
   }
+
+
+
   .filter-container {
     display: flex;
     flex-direction: row;

@@ -22,13 +22,114 @@ section.favorites {
   align-content: flex-start;
 }
 
+.favorites-sidebar-suggestion {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .favorites.sidebar-suggestion-wrapper {
   display: block;
+}
+
+.favorites-exercises-categories-list-item {
+  display: flex;
+  flex-wrap: wrap;
+  width: 335px;
+  min-height: 141px;
+  background-color: var(--color-white-100);
+  border-radius: 15px;
+  gap: 10px;
+  padding: 0 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.favorites-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.favorites.quote-image {
+  height: 119px;
+}
+
+.favorites.icon-wrapper-dumbbell {
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-white-100);
+  margin-bottom: 15px;
+}
+
+.favorites.suggestion-dumbbell {
+  fill: var(--color-black-100);
+}
+
+.favorites.sidebar-suggestion {
+  margin-bottom: 0;
+}
+
+.favorites.sidebar-suggestion-title {
+  margin-bottom: 6px;
+}
+
+.favorites-added-exercises {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  margin: auto;
+}
+
+.favorites-item-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.favorites-header-remove {
+  display: flex;
+  gap: 10px;
+}
+
+.remove-icon {
+  display: block;
+  stroke: var(--color-black-100);
+}
+
+.icon-arrow {
+  stroke: var(--color-black-100);
 }
 
 @media only screen and (min-width: 768px) {
   .favorites-title {
     margin-bottom: 32px;
+    font-size: 44px;
+    line-height: 48px;
+  }
+
+  .favorites-container {
+    flex-grow: 1;
+  }
+
+  .favorites-sidebar-suggestion {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .favorites-exercises-categories-list-item {
+    width: 344px;
+  }
+
+  .favorites-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 32px;
+    column-gap: 16px;
   }
 
   .favorites-content {
@@ -66,96 +167,54 @@ section.favorites {
     gap: 32px;
   }
 
+  .favorites-exercises-categories-list-item {
+    width: 405px;
+  }
+
   .favorites-sidebar {
     row-gap: 16px;
-    max-width: 494px;
+    width: 494px;
   }
 
   .favorites.sidebar-suggestion-wrapper,
   .favorites.quote-image {
     width: 239px;
   }
-}
 
-.favorites.quote-image {
-  height: 119px;
-}
+  .favorites-list.filtered-exercises-categories-list-item {
+    width: 405px;
+  }
 
-.favorites.icon-wrapper-dumbbell {
-  width: 20px;
-  height: 20px;
-  background-color: var(--color-white-100);
-  margin-bottom: 15px;
-}
+  .favorites-list {
+    display: flex;
+  }
 
-.favorites.suggestion-dumbbell {
-  fill: var(--color-black-100);
-}
+  .exercise-card {
+    width: 405px;
+  }
 
-.favorites.sidebar-suggestion {
-  margin-bottom: 0;
-}
+  .favorites.filtered-categories-content-title {
+    overflow: hidden;
+  }
 
-.favorites.sidebar-suggestion-title {
-  margin-bottom: 6px;
-}
+  .favorites.filtered-categories-content-info p {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
+  }
 
-.favorites-added-exercises {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 20px;
-  margin: auto;
-}
-
-.favorites-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* Стилі для повідомлення про відсутність вправ */
-.no-favorites-message {
-  display: none;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1.25rem;
-  color: #333;
-  /* Основний колір тексту */
-  text-align: center;
-  margin: 20px auto;
-  /* Відступи згори та знизу */
-  max-width: 600px;
-  /* Максимальна ширина для тексту */
-  line-height: 1.6;
-  /* Висота рядка для кращої читабельності */
-}
-
-.no-favorites-message.hidden {
-  visibility: hidden;
-}
-
-.favorites-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.favorites-item-header {
-  display: flex;
-  flex-direction: row;
-}
-
-.favorites-header-remove {
-  display: flex;
-}
-
-.remove-icon {
-  display: block;
-  stroke: var(--color-black-100);
-}
-
-.icon-arrow {
-  stroke: var(--color-black-100);
+  .favorites.filtered-categories-content-title h3 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    max-width: 318px;
+    overflow: hidden;
+    font-size: 20px;
+    line-height: 100%;
+    text-transform: capitalize;
+  }
 }
 
 /* Стилі для повідомлення про відсутність вправ */
@@ -286,7 +345,18 @@ section.favorites {
   animation: blackHole 1s ease forwards;
 }
 
+/* Стилі для повідомлення про відсутність вправ */
+
+.no-favorites-message.hidden {
+  visibility: hidden;
+}
+
 .no-favorites-message {
+  max-width: 600px;
+  display: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.6;
   text-align: center;
   color: rgba(36, 36, 36, 1);
   margin: 0 auto;

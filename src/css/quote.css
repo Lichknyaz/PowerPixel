@@ -188,4 +188,12 @@
   .sidebar-quote {
     margin-bottom: 8px;
   }
+
+  .overflow-kit {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 10;
+  }
 }
+
