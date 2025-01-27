@@ -252,7 +252,7 @@ export async function handleCategories({ page: payloadPage, event, isSearch }) {
     fetchParams = {
       [category]: target,
       page: payloadPage,
-      limit: 10,
+      limit: (window.innerWidth < 768) ? 8 : 10,
     };
 
     setCategoriesData({

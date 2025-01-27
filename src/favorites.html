@@ -21,9 +21,7 @@
     <main>
       <section class="favorites">
         <div class="container">
-          <div class="favorites-title">
-            <h1>Favorites</h1>
-          </div>
+          <h1 class="favorites-title">Favorites</h1>
           <div class="favorites-content">
             <div class="favorites-sidebar">
               <div class="favorites sidebar-quote-wrapper border-radius">
@@ -91,19 +89,18 @@
               </div>
             </div>
             <div class="favorites-container">
-              <div class="favorites-added-exercises">
-                <p class="no-favorites-message hidden">
+                <p class="no-favorites-message">
                   It seems that you haven't added any exercises to your
                   favorites yet. To get started, you can add exercises that you
                   like to your favorites for easier access in the future.
                 </p>
-
+              <div class="favorites-added-exercises">
                 <ul class="favorites-list">
                   <!-- Favorite exercises will be dynamically inserted here -->
                 </ul>
               </div>
               <div class="favorites-pagination">
-                <load src="/partials/pagination.html" paginationid="favorites" />
+                <load src="./partials/pagination.html" paginationid="favorites" />
               </div>
             </div>
           </div>
