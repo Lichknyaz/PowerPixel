@@ -110,6 +110,10 @@
     justify-content: center;
   }
 
+  .filtered-exercises-categories-list-item {
+    width: 344px;
+  }
+
   .filtered-categories-content-title h3 {
     font-size: 24px;
   }

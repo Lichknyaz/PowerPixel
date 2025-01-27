@@ -32,6 +32,19 @@ section.favorites {
   display: block;
 }
 
+.favorites-exercises-categories-list-item {
+  display: flex;
+  flex-wrap: wrap;
+  width: 335px;
+  min-height: 141px;
+  background-color: var(--color-white-100);
+  border-radius: 15px;
+  gap: 10px;
+  padding: 0 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .favorites-list {
   display: flex;
   flex-direction: column;
@@ -107,6 +120,10 @@ section.favorites {
     gap: 16px;
   }
 
+  .favorites-exercises-categories-list-item {
+    width: 344px;
+  }
+
   .favorites-list {
     display: flex;
     flex-direction: row;
@@ -150,6 +167,10 @@ section.favorites {
     gap: 32px;
   }
 
+  .favorites-exercises-categories-list-item {
+    width: 405px;
+  }
+
   .favorites-sidebar {
     row-gap: 16px;
     width: 494px;
@@ -160,12 +181,39 @@ section.favorites {
     width: 239px;
   }
 
+  .favorites-list.filtered-exercises-categories-list-item {
+    width: 405px;
+  }
+
   .favorites-list {
     display: flex;
   }
 
   .exercise-card {
     width: 405px;
+  }
+
+  .favorites.filtered-categories-content-title {
+    overflow: hidden;
+  }
+
+  .favorites.filtered-categories-content-info p {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
+  }
+
+  .favorites.filtered-categories-content-title h3 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    max-width: 318px;
+    overflow: hidden;
+    font-size: 20px;
+    line-height: 100%;
+    text-transform: capitalize;
   }
 }
 
