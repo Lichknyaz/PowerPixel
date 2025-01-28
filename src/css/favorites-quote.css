@@ -241,7 +241,7 @@ section.favorites {
 
 @media screen and (min-width: 1440px) {
   .favorites-added-exercises {
-    max-height: 472px;
+    max-height: 495px;
     overflow-y: auto;
     overflow-x: hidden;
     align-content: flex-start;
