@@ -20,7 +20,7 @@
     "vite-plugin-full-reload": "^1.2.0",
     "vite-plugin-html-inject": "^1.1.2"
   },
-  "author": "Kateryna Velychko <kate2603.kv@gmail.com>",
+  "author": "Oleksandr Knyaz <lichknyaz@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "axios": "0.27.2",
